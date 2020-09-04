@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Typography, Card } from '@material-ui/core';
+import OpacityIcon from '@material-ui/icons/Opacity';
+
+
 
 class Dashboard extends Component {
   state = {
@@ -26,7 +29,7 @@ class Dashboard extends Component {
                         <div className='title-div'>
                             <Typography variant="h4">{plant.name}</Typography>
                         </div>
-                        <Typography variant="body1">{plant.notes}</Typography>
+                        <OpacityIcon>Opacity</OpacityIcon>
                     </div>
                     </Card>
                 ))}
