@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Dashboard from '../Dashboard/Dashboard.jsx'
 
 import './App.css';
 
@@ -62,6 +63,13 @@ class App extends Component {
               component={InfoPage}
             />
 
+            <ProtectedRoute
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/dashboard"
+              component={Dashboard}
+            />
+
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
@@ -85,12 +93,12 @@ class App extends Component {
             />
             <ProtectedRoute
               // with authRedirect:
-              // - if logged in, redirects to "/user"
+              // - if logged in, redirects to /dashboard
               // - else shows LandingPage at "/home"
               exact
               path="/home"
               component={LandingPage}
-              authRedirect="/user"
+              authRedirect="/dashboard"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
