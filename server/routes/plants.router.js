@@ -17,7 +17,8 @@ if(req.isAuthenticated()) {
   console.log('Is User logged in?', req.isAuthenticated());
   console.log('user info', req.user)//req.user is a reflection of user table
   
-  let queryText = `SELECT * FROM "plants" WHERE "user_id" = $1`;
+  let queryText = `SELECT * FROM "plants" WHERE "user_id" = $1
+  ORDER BY "plants".id ASC`;
   pool.query(queryText, [req.user.id]).then((result) => {
       res.send(result.rows);
   }).catch((error) => {

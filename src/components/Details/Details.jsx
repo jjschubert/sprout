@@ -41,27 +41,37 @@ class Details extends Component {
 
 
                         <div className='body'>
-
-                            {this.props.store.details.map((item) => {
-                                return (
-                                    <Typography variant='body1' key={item.type_id}>
-                                        <span className='bold'>{item.description}: </span> 
-                                        {moment(item.due_date).format('MMMM Do')}
+                            <div className='section'>
+                                {this.props.store.details.map((item) => {
+                                    return (
+                                        <Typography variant='body1' key={item.type_id}>
+                                            <span className='bold'>{item.description}: </span>
+                                            {moment(item.due_date).format('MMMM Do')}
                                         </Typography>
-                                )
-                            })}
+                                    )
+                                })}
+                            </div>
 
-                            <Typography variant='body1'><span className='bold'>Last Watered: </span>
-                                { this.props.store.details[0].last_water ?
-                                moment(this.props.store.details[0].last_water).format('MMMM Do, h:mm:ss a')
-                            : <span>never</span>}
-                            </Typography>
-                            <Typography variant='body1'><span className='bold'>Last Fertilized: </span>
-                                {this.props.store.details[0].last_fertilized ?
-                                    moment(this.props.store.details[0].last_fertilized).format('MMMM Do, h:mm:ss a')
-                                    : <span>never</span>}</Typography>
-                            <Typography variant='body1'><span className='bold'>Notes: </span>
-                                {this.props.store.details[0].notes}</Typography>
+                            <div className='section'>
+                                <Typography variant='body1'><span className='bold'>Last Watered: </span>
+                                    {this.props.store.details[0].last_water ?
+                                        moment(this.props.store.details[0].last_water).format('MMMM Do, h:mm:ss a')
+                                        : <span>never</span>}
+                                </Typography>
+                                <Typography variant='body1'><span className='bold'>Last Fertilized: </span>
+    
+                                    {this.props.store.details[0].last_fertilized ?
+                                        moment(this.props.store.details[0].last_fertilized).format('MMMM Do, h:mm:ss a')
+                                        : <span>never</span>}</Typography>
+                                        </div>
+                                <div className='section'>
+                                <Typography variant='body1'><span className='bold'>Notes: </span>
+                                    {this.props.store.details[0].notes}</Typography>
+                            </div>
+                        </div>
+                        <div className='btnDiv'>
+                            <Button onClick={() => this.props.history.push('/dashboard')}>Back</Button>
+                            <Button>Edit</Button>
                         </div>
                     </Card>}
             </div>

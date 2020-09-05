@@ -34,7 +34,7 @@ class Dashboard extends Component {
                             <div className='card-content'>
                                 <img className='plant_image' src={plant.image_path} alt={plant.name} />
                                 <div className='title-div'>
-                                    <Typography variant="h4">{plant.name}</Typography>
+                                    <Typography variant="h5">{plant.name}</Typography>
                                 </div>
                                 <Button className='iconBtn' onClick={() => this.props.history.push('/details/' + plant.id)}>
                                     <MoreVertIcon /></Button>
