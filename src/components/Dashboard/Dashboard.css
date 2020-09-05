@@ -13,8 +13,12 @@
     
 }
 
+html {
+    background-color: #efefef;
+}
+
 #dashboard{
-    background-color: #efefef;;
+    background-color: #efefef;
     margin-top: 0;
 }
 

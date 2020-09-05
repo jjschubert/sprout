@@ -18,6 +18,7 @@ class LandingPage extends Component {
 
   render() {
     return (
+      <div className='forImage'>
       <div className="container">
 
         <div className="grid">
@@ -44,6 +45,7 @@ class LandingPage extends Component {
             </center>
           </div>
         </div>
+      </div>
       </div>
     );
   }

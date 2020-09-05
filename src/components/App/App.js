@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Dashboard from '../Dashboard/Dashboard.jsx';
 import Details from '../Details/Details.jsx';
+import Tasks from '../Tasks/Tasks.jsx'
+import AddPlant from '../AddPlant/AddPlant.jsx'
 
 import './App.css';
 
@@ -55,6 +57,20 @@ class App extends Component {
               exact
               path="/user"
               component={UserPage}
+            />
+
+          <ProtectedRoute
+              // logged in shows Tasks else shows LoginPage
+              exact
+              path="/tasks"
+              component={Tasks}
+            />
+
+          <ProtectedRoute
+              // logged in shows AddPlant else shows LoginPage
+              exact
+              path="/add"
+              component={AddPlant}
             />
 
             <ProtectedRoute

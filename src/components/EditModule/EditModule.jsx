@@ -64,33 +64,36 @@ class EditModule extends Component {
                     <DialogContent>
                         <TextField
                             margin="dense"
+                            type='date'
                             label="Last watered"
                             fullWidth
                             variant="outlined"
                             defaultValue={this.props.store.details[0].last_water ?
-                                moment(this.props.store.details[0].last_water).format('MMMM Do')
-                                : 'never'}
+                                moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
+                                : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}
                         />
                         <TextField
                             margin="dense"
                             label="Last fertilized"
                             fullWidth
+                            type='date'
                             variant="outlined"
                             defaultValue={this.props.store.details[0].last_fertilize ?
-                                moment(this.props.store.details[0].last_fertilize).format('MMMM Do')
-                                : 'never'}
+                                moment(this.props.store.details[0].last_fertilize).format('yyyy-MM-DD')
+                                : 'yyyy-MM-dd'}
                             required onChange={(event) => this.handleChange(event, 'lastFertilize')}
                         />
-
+                       
                         {this.props.store.details.map((item) => {
                             let taskType = item.type_id;
                             return (
                                 <TextField key={item.type_id}
                                     margin="dense"
                                     label={item.description}
-                                    defaultValue={moment(item.due_date).format('MMMM Do')}
+                                    defaultValue={moment(item.due_date).format('yyyy-MM-DD')}
                                     fullWidth
+                                    type='date'
                                     variant="outlined"
                                     required onChange={(event) => this.handleChange(event, taskType)}
                                 />
