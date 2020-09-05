@@ -35,7 +35,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       console.log('/plants/details');
   
       
-      let queryText = `SELECT "plants".user_id, "plants".name, "plants".image_path, "plants".notes, "plants".last_fertilize, "plants".last_water, "tasks".due_date, "tasks".type_id, "task_type".description
+      let queryText = `SELECT "plants".user_id, "plants".id, "plants".name, "plants".image_path, "plants".notes, "plants".last_fertilize, "plants".last_water, "tasks".due_date, "tasks".type_id, "task_type".description
       FROM "plants"
       INNER JOIN "tasks" on "tasks".plant_id = "plants".id
       INNER JOIN "task_type" on "task_type".id = "tasks".type_id

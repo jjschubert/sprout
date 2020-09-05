@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Typography, Card, Button } from '@material-ui/core';
 import OpacityIcon from '@material-ui/icons/Opacity';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import InfoIcon from '@material-ui/icons/Info';
 import './Dashboard.css'
 
 
@@ -26,9 +26,9 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <>
-                <h2>{this.state.heading}</h2>
-                <div className='container'>
+            <div className='dashboard'>
+                <h2 className='title'>{this.state.heading}</h2>
+                <div className='container' id='dashboard'>
                     {this.props.store.plants.map((plant) => (
                         <Card key={plant.id} className='item'>
                             <div className='card-content'>
@@ -37,14 +37,14 @@ class Dashboard extends Component {
                                     <Typography variant="h5">{plant.name}</Typography>
                                 </div>
                                 <Button className='iconBtn' onClick={() => this.props.history.push('/details/' + plant.id)}>
-                                    <MoreVertIcon /></Button>
+                                    <InfoIcon /></Button>
                                 <Button onClick={() => this.waterPlant(plant)} className='iconBtn'>
                                     <OpacityIcon /> </Button>
                             </div>
                         </Card>
                     ))}
                 </div>
-            </>
+            </div>
         );
     }
 }

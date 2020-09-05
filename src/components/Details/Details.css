@@ -1,13 +1,16 @@
 .body {
-    width: 50%;
     margin-top: 1em;
     padding: 1em;
     display: block;
+    margin: 0 1em;
 }
 
-.container {
+
+.detailContainer {
+    background-color:#efefef;
     display: flex;
     justify-content: center;
+    padding-bottom: 600px;
 }
 
 img {
@@ -15,7 +18,7 @@ img {
 }
 
 .details {
-    width: 55%;
+    width: 40%;
     margin: 1em;
     padding: 1em;
 }
@@ -30,4 +33,9 @@ img {
 
 .section{
     margin: .5em;
+}
+
+.today {
+    float: right;
+    padding: 0;
 }

@@ -5,6 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+
 const Nav = (props) => {
   let loginLinkData = {
     path: '/login',

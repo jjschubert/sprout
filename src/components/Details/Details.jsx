@@ -19,21 +19,17 @@ class Details extends Component {
 
     }
 
-
-    // description: "start seed"
-    // due_date: "2020-04-01T05:00:00.000Z"
-    // image_path: "https://www.gardeningknowhow.com/wp-content/uploads/2009/04/cherry-tomatoes-1-400x274.jpg"
-    // last_fertilize: null
-    // last_water: "2020-09-04T05:00:00.000Z"
-    // name: "cherry tomatoes"
-    // notes: "In bucket on patio"
-    // type_id: 1
-    // user_id: 2
+    waterPlant = (plant) => {;
+        console.log('mark watered', plant)
+        this.props.dispatch({ type: 'WATER_PLANT', payload: plant });
+        let id = this.props.match.params.plant_id;
+        this.props.dispatch({ type: 'GET_DETAILS', payload: id })
+    }
 
     render() {
 
         return (
-            <div className='container'>
+            <div className='detailContainer'>
                 {this.props.store.details[0] &&
 
                     <Card className='details'>
@@ -41,6 +37,21 @@ class Details extends Component {
 
 
                         <div className='body'>
+
+                        <div className='section'>
+                        <Button className='today' onClick={() => this.waterPlant(this.props.store.details[0])}>Today</Button>
+                                <Typography variant='body1'><span className='bold'>Last Watered: </span>
+                                    {this.props.store.details[0].last_water ?
+                                        moment(this.props.store.details[0].last_water).format('MMMM Do')
+                                        : <span>never</span>}
+                                </Typography> 
+                                <Button className='today'>Today</Button>
+                                <Typography variant='body1'><span className='bold'>Last Fertilized: </span>
+                                    {this.props.store.details[0].last_fertilized ?
+                                        moment(this.props.store.details[0].last_fertilized).format('MMMM Do')
+                                        : <span>never</span>}</Typography>
+                                        </div>
+
                             <div className='section'>
                                 {this.props.store.details.map((item) => {
                                     return (
@@ -51,19 +62,6 @@ class Details extends Component {
                                     )
                                 })}
                             </div>
-
-                            <div className='section'>
-                                <Typography variant='body1'><span className='bold'>Last Watered: </span>
-                                    {this.props.store.details[0].last_water ?
-                                        moment(this.props.store.details[0].last_water).format('MMMM Do, h:mm:ss a')
-                                        : <span>never</span>}
-                                </Typography>
-                                <Typography variant='body1'><span className='bold'>Last Fertilized: </span>
-    
-                                    {this.props.store.details[0].last_fertilized ?
-                                        moment(this.props.store.details[0].last_fertilized).format('MMMM Do, h:mm:ss a')
-                                        : <span>never</span>}</Typography>
-                                        </div>
                                 <div className='section'>
                                 <Typography variant='body1'><span className='bold'>Notes: </span>
                                     {this.props.store.details[0].notes}</Typography>
