@@ -22,7 +22,17 @@ function* waterPlant(action) {
     } catch (err) {
         console.log('error in waterPlant', err)
     }
+}
 
+function* getDetails(action) {
+    try {
+        console.log('fetchDetails, id:', action.payload)
+        let response = yield axios.get(`api/plants/${action.payload}`)
+        console.log(response.data)
+        yield put({ type: 'SET_DETAILS', payload: response.data })
+    } catch (error) {
+        console.log('error in fetch details', error);
+    }
 }
 
 //must put this in the root saga to work
@@ -30,6 +40,7 @@ function* waterPlant(action) {
 function* plantsSaga() {
     yield takeLatest('FETCH_PLANTS', fetchPlants)
     yield takeLatest('WATER_PLANT', waterPlant)
+    yield takeLatest('GET_DETAILS', getDetails)
 }
 
 export default plantsSaga;

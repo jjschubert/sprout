@@ -10,9 +10,8 @@ const {
  */
 
  // need a way to protect this route (anytime you're using req.user is a good rule of thumb)
- //add if block with is authenticated
+ //gets all plants
 router.get('/', (req, res) => {
-  // This route *should* get all pets for the logged in user
 if(req.isAuthenticated()) {
   console.log('/plants GET route');
   console.log('Is User logged in?', req.isAuthenticated());
@@ -29,5 +28,20 @@ if(req.isAuthenticated()) {
   res.sendStatus(403);
 }
 });
+
+//gets one plant
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+      console.log('/plants/details');
+  
+      
+      let queryText = `SELECT * FROM "plants" WHERE "id" = $1`;
+      pool.query(queryText, [req.params.id]).then((result) => {
+          res.send(result.rows);
+      }).catch((error) => {
+          console.log("error in get details",error);
+          res.sendStatus(500);
+      });
+   
+    });
 
 module.exports = router;
