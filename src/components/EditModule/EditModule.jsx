@@ -18,19 +18,7 @@ class EditModule extends Component {
     }
   };
 
-
-// description: "Harden Off"
-// due_date: "2020-05-16T05:00:00.000Z"
-// id: 2
-// image_path: "images/salvaterra.jpeg"
-// last_fertilize: "2020-09-05T05:00:00.000Z"
-// last_water: "2020-09-05T05:00:00.000Z"
-// name: "Salvaterra Tomatoes"
-// notes: "Prone to cracking -- give oyster shell fertilizer"
-// type_id: 2
-// user_id: 2
   
-
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -68,24 +56,18 @@ class EditModule extends Component {
               variant="outlined"
               defaultValue={moment(this.props.store.details[0].last_water).format('MMMM Do')}
             />
-            <TextField
-              margin="dense"
-              label="Seed start date"
-              fullWidth
-              variant="outlined"
-            />
-            <TextField
-              margin="dense"
-              label="Harden off date"
-              fullWidth
-              variant="outlined"
-            />
-            <TextField
-              margin="dense"
-              label="Plant date"
-              fullWidth
-              variant="outlined"
-            />
+
+            {this.props.store.details.map((item) => {
+                return(
+                <TextField key={item.type_id}
+                margin="dense"
+                label={item.description}
+                defaultValue={moment(item.due_date).format('MMMM Do')}
+                fullWidth
+                variant="outlined"
+              />
+                )
+            })}
             <TextField
               margin="dense"
               label="Notes"
