@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import "./LoginForm.css"
 
 class LoginForm extends Component {
   state = {
@@ -32,6 +33,7 @@ class LoginForm extends Component {
 
   render() {
     return (
+      <div className='logIn'>
       <form className="formPanel" onSubmit={this.login}>
         <h2>Login</h2>
         {this.props.store.errors.loginMessage && (
@@ -67,6 +69,7 @@ class LoginForm extends Component {
           <input className="btn" type="submit" name="submit" value="Log In" />
         </div>
       </form>
+      </div>
     );
   }
 }
