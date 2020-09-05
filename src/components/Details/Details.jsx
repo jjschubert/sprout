@@ -26,6 +26,13 @@ class Details extends Component {
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
     }
 
+    fertilizePlant = (plant) => {;
+        console.log('mark watered', plant)
+        this.props.dispatch({ type: 'FERTILIZE_PLANT', payload: plant });
+        let id = this.props.match.params.plant_id;
+        this.props.dispatch({ type: 'GET_DETAILS', payload: id })
+    }
+
     render() {
 
         return (
@@ -37,19 +44,23 @@ class Details extends Component {
 
 
                         <div className='body'>
+    
+                        <img className='plant_image' src={this.props.store.details[0].image_path} alt={this.props.store.details[0].name} />
 
                         <div className='section'>
-                        <Button className='today' onClick={() => this.waterPlant(this.props.store.details[0])}>Today</Button>
-                                <Typography variant='body1'><span className='bold'>Last Watered: </span>
+                        
+                                <Typography className='inline' variant='body1'><span className='bold'>Last Watered: </span>
                                     {this.props.store.details[0].last_water ?
                                         moment(this.props.store.details[0].last_water).format('MMMM Do')
                                         : <span>never</span>}
                                 </Typography> 
-                                <Button className='today'>Today</Button>
-                                <Typography variant='body1'><span className='bold'>Last Fertilized: </span>
-                                    {this.props.store.details[0].last_fertilized ?
-                                        moment(this.props.store.details[0].last_fertilized).format('MMMM Do')
+                                <Button className='today' size="small" onClick={() => this.waterPlant(this.props.store.details[0])} variant="outlined" style={{color: '#689B21' }}>Today</Button>
+                                <br />
+                                <Typography className='inline' variant='body1'><span className='bold'>Last Fertilized: </span>
+                                    {this.props.store.details[0].last_fertilize ?
+                                        moment(this.props.store.details[0].last_fertilize).format('MMMM Do')
                                         : <span>never</span>}</Typography>
+                                        <Button className='today' onClick={() => this.fertilizePlant(this.props.store.details[0])} variant="outlined" style={{color: '#689B21' }} size="small">Today</Button>
                                         </div>
 
                             <div className='section'>

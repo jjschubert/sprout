@@ -24,6 +24,16 @@ function* waterPlant(action) {
     }
 }
 
+function* fertilizePlant(action) {
+    console.log('in fertPlant')
+    try {
+        console.log(action.payload)
+       yield axios.put('/api/fertilize', action.payload)
+    } catch (err) {
+        console.log('error in fertPlant', err)
+    }
+}
+
 function* getDetails(action) {
     try {
         console.log('fetchDetails, id:', action.payload)
@@ -41,6 +51,7 @@ function* plantsSaga() {
     yield takeLatest('FETCH_PLANTS', fetchPlants)
     yield takeLatest('WATER_PLANT', waterPlant)
     yield takeLatest('GET_DETAILS', getDetails)
+    yield takeLatest('FERTILIZE_PLANT', fertilizePlant)
 }
 
 export default plantsSaga;
