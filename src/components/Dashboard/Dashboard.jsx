@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Typography, Card, Button } from '@material-ui/core';
-import OpacityIcon from '@material-ui/icons/Opacity';
 import InfoIcon from '@material-ui/icons/Info';
 import './Dashboard.css'
 import WaterSnackbar from '../WaterSnackbar/WaterSnackbar';
@@ -17,13 +16,6 @@ class Dashboard extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PLANTS' })
     }
-
-    waterPlant = (plant) => {
-        console.log('mark watered', plant)
-        this.props.dispatch({ type: 'WATER_PLANT', payload: plant })
-    }
-
-   
 
     render() {
         return (

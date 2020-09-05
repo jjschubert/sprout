@@ -4,6 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import { Card, Button, Typography } from '@material-ui/core/';
 import './Details.css';
 import moment from 'moment';
+import EditModule from '../EditModule/EditModule.jsx';
 
 
 class Details extends Component {
@@ -79,8 +80,8 @@ class Details extends Component {
                             </div>
                         </div>
                         <div className='btnDiv'>
-                            <Button onClick={() => this.props.history.push('/dashboard')}>Back</Button>
-                            <Button>Edit</Button>
+                        <EditModule plant={this.props.store.details[0]} />
+                            <Button onClick={() => this.props.history.push('/dashboard')}>Back</Button>   
                         </div>
                     </Card>}
             </div>
