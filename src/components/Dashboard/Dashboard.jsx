@@ -5,6 +5,7 @@ import { Typography, Card, Button } from '@material-ui/core';
 import OpacityIcon from '@material-ui/icons/Opacity';
 import InfoIcon from '@material-ui/icons/Info';
 import './Dashboard.css'
+import WaterSnackbar from '../WaterSnackbar/WaterSnackbar';
 
 
 
@@ -38,8 +39,9 @@ class Dashboard extends Component {
                                 </div>
                                 <Button className='iconBtn' onClick={() => this.props.history.push('/details/' + plant.id)}>
                                     <InfoIcon /></Button>
-                                <Button onClick={() => this.waterPlant(plant)} className='iconBtn'>
-                                    <OpacityIcon /> </Button>
+                                {/* <Button onClick={() => this.waterPlant(plant)} className='iconBtn'>
+                                    <OpacityIcon /> </Button> */}
+                                    <WaterSnackbar plant={plant}/>
                             </div>
                         </Card>
                     ))}
