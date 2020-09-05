@@ -22,11 +22,10 @@ class Details extends Component {
 
   render() {
 
-    
-
     return (
       <div>
         <h2>{this.state.heading}</h2>
+        {this.props.store.details[0] && <p>Hello</p>}
       </div>
     );
   }
