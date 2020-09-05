@@ -1,0 +1,29 @@
+.body {
+    width: 50%;
+    margin-top: 1em;
+    padding: 1em;
+    display: block;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    margin-top: .5em;
+}
+
+.details {
+    width: 55%;
+    margin: 1em;
+    padding: 1em;
+}
+
+.title {
+    text-align: center;
+}
+
+.bold{
+    font-weight: bold;
+}
