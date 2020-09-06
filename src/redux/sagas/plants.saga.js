@@ -47,7 +47,7 @@ function* getDetails(action) {
 
 function* addPlant(action) {
     try {
-        yield axios.post (`/api/plants`)
+        yield axios.post(`/api/plants`, action.payload)
     } catch (error){
         console.log('error in addPlant', error)
     }

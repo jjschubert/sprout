@@ -5,11 +5,69 @@ const {
   rejectUnauthenticated, rejectNonAdmin
 } = require('../modules/authentication-middleware');
 
-/**
- * GET route template
- */
+//adds new plant to DB
+router.post('/', rejectUnauthenticated, (req, res) => {
+  console.log('got to plantPost', req.body)
 
- // need a way to protect this route (anytime you're using req.user is a good rule of thumb)
+  const insertPlant = `INSERT INTO "plants"("user_id", "name", "image_path", "notes")
+  VALUES($1, $2, $3, $4)
+  RETURNING "id"`
+
+
+  pool.query(insertPlant, [req.user.id, req.body.plantName, req.body.imagePath, req.body.notes])
+  .then(result => {
+    console.log('result.rows', result.rows)
+    console.log('New Plant Id:', result.rows[0].id)
+    const createPlantId= result.rows[0].id;
+    
+    let taskQueryText;
+    let queryValues;
+
+    if (req.body.hardenOff && req.body.seedStart) {
+      //sends all three task types
+      taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
+      VALUES ($1, $2, $3, $4),
+      ($1, $2, $5, $6),
+      ($1, $2, $7, $8);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 2, req.body.hardenOff, 1, req.body.seedStart]
+      
+    } else if (req.body.hardenOff) {
+      //sends plantOutdoor task and hardenOff task
+      taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
+      VALUES ($1, $2, $3, $4),
+      ($1, $2, $5, $6);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 2, req.body.hardenOff]
+
+    } else if (req.body.seedStart) {
+      //sends seedStart task and plantOutdoor task
+      taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
+      VALUES ($1, $2, $3, $4),
+      ($1, $2, $5, $6);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 1, req.body.seedStart]
+
+    } else {
+      //sends plantOutdoor task, which is req'd on form
+      taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
+      VALUES ($1, $2, $3, $4);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors]
+      
+    }
+    //second query makes tasks
+    pool.query(taskQueryText, queryValues)
+    .then( result => {
+      res.sendStatus(201);
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
+
+    //catch for plant creation query
+  }).catch(err => {
+    console.log(err);
+    res.sendStatus(500);
+  })
+})
+
  //gets all plants
 router.get('/', (req, res) => {
 if(req.isAuthenticated()) {

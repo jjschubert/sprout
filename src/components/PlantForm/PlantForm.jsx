@@ -17,7 +17,7 @@ class PlantForm extends Component {
         hardenOff: '',
         plantOutdoors: '',
         imagePath: '',
-        Notes: ''}
+        notes: ''}
     };
 
         //tracks form changes
@@ -42,7 +42,7 @@ class PlantForm extends Component {
                     hardenOff: '',
                     plantOutdoors: '',
                     imagePath: '',
-                    Notes: '' }
+                    notes: '' }
             })
         }
 
