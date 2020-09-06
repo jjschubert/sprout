@@ -1,0 +1,9 @@
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.formDiv {
+    padding-top: 2em;
+}

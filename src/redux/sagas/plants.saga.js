@@ -45,6 +45,14 @@ function* getDetails(action) {
     }
 }
 
+function* addPlant(action) {
+    try {
+        yield axios.post (`/api/plants`)
+    } catch (error){
+        console.log('error in addPlant', error)
+    }
+}
+
 //must put this in the root saga to work
 //import and in the reducer itself
 function* plantsSaga() {
@@ -52,6 +60,7 @@ function* plantsSaga() {
     yield takeLatest('WATER_PLANT', waterPlant)
     yield takeLatest('GET_DETAILS', getDetails)
     yield takeLatest('FERTILIZE_PLANT', fertilizePlant)
+    yield takeLatest('ADD_PLANT', addPlant)
 }
 
 export default plantsSaga;

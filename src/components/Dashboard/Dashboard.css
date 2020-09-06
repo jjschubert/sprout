@@ -44,3 +44,6 @@ html {
 .iconBtn {
     float: right;
 }
+ .title {
+     font-family: sans-serif;
+ }

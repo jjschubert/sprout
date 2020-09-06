@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './AddPlant.css';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper} from '@material-ui/core';
+import PlantForm from '../PlantForm/PlantForm';
 
 
 class AddPlant extends Component {
@@ -17,7 +18,7 @@ class AddPlant extends Component {
   render() {
     return (
       <div className='bkg'>
-        
+        <PlantForm />
         <Paper>
         <h2>{this.state.heading}</h2>
       <Table>
