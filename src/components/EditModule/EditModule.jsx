@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import {Button, InputLabel, TextField, Dialog, DialogActions, DialogContent, DialogTitle} from '@material-ui/core/';
 import moment from 'moment';
 
 class EditModule extends Component {
@@ -51,10 +46,11 @@ class EditModule extends Component {
     render() {
 
         return (
-            <div>
+            <div className='inline'>
                 <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
                     Edit Plant
         </Button>
+            
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
@@ -62,23 +58,25 @@ class EditModule extends Component {
                 >
                     <DialogTitle id="form-dialog-title">Update Plant</DialogTitle>
                     <DialogContent>
+                    <InputLabel htmlFor='lastWatered'>Last Watered</InputLabel>
                         <TextField
                             margin="dense"
                             type='date'
-                            label="Last watered"
                             fullWidth
                             variant="outlined"
+                            id="lastWatered"
                             defaultValue={this.props.store.details[0].last_water ?
                                 moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
                                 : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}
                         />
+                        <InputLabel htmlFor="lastFertilized">Last Fertilized</InputLabel>
                         <TextField
                             margin="dense"
-                            label="Last fertilized"
                             fullWidth
                             type='date'
                             variant="outlined"
+                            id="lastFertilized"
                             defaultValue={this.props.store.details[0].last_fertilize ?
                                 moment(this.props.store.details[0].last_fertilize).format('yyyy-MM-DD')
                                 : 'yyyy-MM-dd'}
@@ -88,15 +86,17 @@ class EditModule extends Component {
                         {this.props.store.details.map((item) => {
                             let taskType = item.type_id;
                             return (
-                                <TextField key={item.type_id}
+                                <div key={item.type_id}>
+                                <InputLabel>{item.description}*</InputLabel>
+                                <TextField 
                                     margin="dense"
-                                    label={item.description}
                                     defaultValue={moment(item.due_date).format('yyyy-MM-DD')}
                                     fullWidth
                                     type='date'
                                     variant="outlined"
                                     required onChange={(event) => this.handleChange(event, taskType)}
                                 />
+                                </div>
                             )
                         })}
                         <TextField

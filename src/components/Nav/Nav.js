@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import EcoIcon from '@material-ui/icons/Eco';
+import Badge from '@material-ui/core/Badge';
+
 
 
 const Nav = (props) => {
@@ -31,10 +34,15 @@ const Nav = (props) => {
         </Link>
         {/* show the tasks page if the user is logged in */}
         {props.store.user.id && 
+        
           <Link className='nav-link' to='/tasks'>Tasks</Link>
+          
         }
          {props.store.user.id && 
           <Link className='nav-link' to='/add'>Add Plants</Link>
+        }
+        {props.store.user.id && 
+          <Link className='nav-link' to='/tasks'><Badge badgeContent={4} color="secondary"><EcoIcon /></Badge></Link>
         }
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (

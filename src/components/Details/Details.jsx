@@ -61,7 +61,9 @@ class Details extends Component {
                                     {this.props.store.details[0].last_fertilize ?
                                         moment(this.props.store.details[0].last_fertilize).format('MMMM Do')
                                         : <span>never</span>}</Typography>
+                                        <div>
                                         <Button className='today' onClick={() => this.fertilizePlant(this.props.store.details[0])} variant="outlined" style={{color: '#689B21' }} size="small">Today</Button>
+                                        </div>
                                         </div>
 
                             <div className='section'>
@@ -79,10 +81,10 @@ class Details extends Component {
                                     {this.props.store.details[0].notes}</Typography>
                             </div>
                         </div>
-                        <div className='btnDiv'>
-                        <EditModule plant={this.props.store.details[0]} />
+                        <div className='inline'>
                             <Button onClick={() => this.props.history.push('/dashboard')}>Back</Button>   
                         </div>
+                        <EditModule plant={this.props.store.details[0]} />
                     </Card>}
             </div>
         );
