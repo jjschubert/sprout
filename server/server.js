@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const plantsRouter = require('./routes/plants.router');
 const waterRouter = require('./routes/water.router');
 const fertilizeRouter = require('./routes/fertilize.router')
+const taskRouter = require('./routes/tasks.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/plants', plantsRouter);
 app.use('/api/water', waterRouter);
 app.use('/api/fertilize', fertilizeRouter);
+app.use('/api/tasks', taskRouter)
 
 // Serve static files
 app.use(express.static('build'));

@@ -29,7 +29,7 @@ class LandingPage extends Component {
 
             <p>
             Sprout makes it easy to manage different timelines for each plant as you guide it through various stages, 
-            from starting seeds to caring for a sprouting seedling to preparing it for the outdoors to finally planting it outdoors. 
+            from starting seeds to caring for a sprouting seedling to preparing it for the elements to finally planting it outdoors. 
             Plan and track important milestones for each plant and easily view overdue and upcoming tasks. 
             </p>
 
