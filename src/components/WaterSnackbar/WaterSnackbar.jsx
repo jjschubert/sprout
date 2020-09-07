@@ -14,6 +14,7 @@ class WaterSnackbar extends Component {
     open: false,
   };
 
+  //sends to db that plant was watered today, opens snackbar
   handleClick = (plant) => {
     this.setState({ open: true });
     console.log(plant)
@@ -27,13 +28,6 @@ class WaterSnackbar extends Component {
 
     this.setState({ open: false });
   };
-
-  waterPlant = (plant) => {;
-    console.log('mark watered', plant)
-    // this.props.dispatch({ type: 'WATER_PLANT', payload: plant });
-    // let id = this.props.match.params.plant_id;
-    // this.props.dispatch({ type: 'GET_DETAILS', payload: id })
-}
 
   render() {
     return (

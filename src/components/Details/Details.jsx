@@ -55,14 +55,14 @@ class Details extends Component {
                                         moment(this.props.store.details[0].last_water).format('MMMM Do')
                                         : <span>never</span>}
                                 </Typography> 
-                                <Button className='today' size="small" onClick={() => this.waterPlant(this.props.store.details[0])} variant="outlined" style={{color: '#689B21' }}>Today</Button>
+                                <Button className='today' size="small" onClick={() => this.waterPlant(this.props.store.details[0])} variant="outlined" color='primary' >Today</Button>
                                 <br />
                                 <Typography className='inline' variant='body1'><span className='bold'>Last Fertilized: </span>
                                     {this.props.store.details[0].last_fertilize ?
                                         moment(this.props.store.details[0].last_fertilize).format('MMMM Do')
                                         : <span>never</span>}</Typography>
                                         <div>
-                                        <Button className='today' onClick={() => this.fertilizePlant(this.props.store.details[0])} variant="outlined" style={{color: '#689B21' }} size="small">Today</Button>
+                                        <Button className='today' onClick={() => this.fertilizePlant(this.props.store.details[0])} variant="outlined" color='primary' size="small">Today</Button>
                                         </div>
                                         </div>
 

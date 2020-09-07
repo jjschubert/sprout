@@ -10,9 +10,7 @@ import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -23,8 +21,23 @@ import Dashboard from '../Dashboard/Dashboard.jsx';
 import Details from '../Details/Details.jsx';
 import Tasks from '../Tasks/Tasks.jsx'
 import AddPlant from '../AddPlant/AddPlant.jsx'
-
 import './App.css';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+
+const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#689B21',
+    },
+    secondary: {
+      main: '#b32274',
+    },
+    info: {
+      main: '#2196f3',
+    },
+  },
+});
 
 class App extends Component {
   componentDidMount() {
@@ -33,6 +46,7 @@ class App extends Component {
 
   render() {
     return (
+      <ThemeProvider theme={customTheme}>
       <Router>
         <div>
           <Nav />
@@ -132,6 +146,7 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
+      </ThemeProvider>
     );
   }
 }

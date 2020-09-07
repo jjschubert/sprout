@@ -42,7 +42,10 @@ const Nav = (props) => {
           <Link className='nav-link' to='/add'>Add Plants</Link>
         }
         {props.store.user.id && 
-          <Link className='nav-link' to='/tasks'><Badge badgeContent={4} color="secondary"><EcoIcon /></Badge></Link>
+          <Link className='nav-link' to='/tasks'><Badge badgeContent={4} anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}color="secondary"><EcoIcon /></Badge></Link>
         }
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (

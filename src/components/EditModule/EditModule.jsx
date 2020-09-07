@@ -47,7 +47,7 @@ class EditModule extends Component {
 
         return (
             <div className='inline'>
-                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
                     Edit Plant
         </Button>
             
@@ -60,7 +60,7 @@ class EditModule extends Component {
                     <DialogContent>
                     <InputLabel htmlFor='lastWatered'>Last Watered</InputLabel>
                         <TextField
-                            margin="dense"
+                            margin="dense" 
                             type='date'
                             fullWidth
                             variant="outlined"
