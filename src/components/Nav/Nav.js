@@ -47,7 +47,7 @@ const Nav = (props) => {
             horizontal: 'right',
           }}color="secondary"><EcoIcon /></Badge></Link>
         }
-        {/* Show the link to the info page and the logout button if the user is logged in */}
+        {/* Show the link to the logout button if the user is logged in */}
         {props.store.user.id && (
             <LogOutButton className="nav-link" />
         )}
