@@ -13,9 +13,9 @@
     
 }
 
-html {
+/* html {
     background-color: #efefef;
-}
+} */
 
 #dashboard{
     background-color: #efefef;
@@ -27,6 +27,7 @@ html {
     padding-top: 1em;
     background-color: #efefef;;
     margin-bottom: 0;
+    font-family: Raleway, sans-serif;
 }
 
 .plant_image {

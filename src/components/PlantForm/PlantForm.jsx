@@ -84,6 +84,8 @@ class PlantForm extends Component {
                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
                             type='date' />
                     </div>
+                    </div>
+                    <div className='inputContainer'>
                     <div>
                         <InputLabel>Image Path*</InputLabel>
                         <TextField
@@ -100,7 +102,7 @@ class PlantForm extends Component {
                             onChange={(event) => this.handleChange(event, 'notes')}
                             type='text' />
                     </div>
-                    <Button type='submit'>Add Plant</Button>
+                    <Button color='secondary' type='submit'>Add Plant</Button>
                 </div>
                 </form>
             </div>

@@ -1,4 +1,6 @@
 .taskBkg {
     background-color: #efefef;
-    height: 600px;
+    height: 800px;
+    margin-top: 0px;
+    padding-top: 1em;
 }
