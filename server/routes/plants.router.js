@@ -5,6 +5,17 @@ const {
   rejectUnauthenticated, rejectNonAdmin
 } = require('../modules/authentication-middleware');
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  let queryText = `DELETE FROM "plants" WHERE "id" = $1`
+console.log(req.params.id)
+  pool.query(queryText, [req.params.id])
+  .then (result => {
+    res.sendStatus(201)
+  }).catch(error => {
+    console.log('error in delete', error)
+  })
+})
+
 //adds new plant to DB
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('got to plantPost', req.body)

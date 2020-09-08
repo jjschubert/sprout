@@ -6,25 +6,30 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
+import { useHistory } from "react-router";
 
 export default function AlertDialog(props) {
   const [open, setOpen] = React.useState(false);
-
+  const history = useHistory();
   //sends delete request to server
   const deletePlant = () => {
-      console.log(props.id);
+      console.log(props);
       setOpen(false);
-    // axios({
-    //     method: 'DELETE',
-    //     url: `/feedback/${props.item.id}`
-    // }).then((response) => {
-    //     //add refresh here
-    //     setOpen(false);
-    //     props.getFeedback();
-    // }).catch(error => {
-    //     console.log('error in DELETE', error);
-    // })
-}
+      axios({
+        method: 'DELETE',
+        url: `/api/plants/${props.id}`
+    }).then((response) => {
+        //add refresh here
+        setOpen(false);
+        // props.getFeedback();
+        // this.props.history.push('/dashboard')
+        history.push({
+        pathname:  "/Dashboard"})
+       
+    }).catch(error => {
+        console.log('error in DELETE', error);
+    })
+  }
 
 //controls confirmation dialoge
   const handleClickOpen = () => {

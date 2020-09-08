@@ -53,6 +53,14 @@ function* addPlant(action) {
     }
 }
 
+function* deletePlant(action) {
+    try {
+        yield axios.delete('/api/plants', action.payload)
+    } catch (error) {
+        console.log('error in deletePlant')
+    }
+}
+
 //must put this in the root saga to work
 //import and in the reducer itself
 function* plantsSaga() {
@@ -61,6 +69,7 @@ function* plantsSaga() {
     yield takeLatest('GET_DETAILS', getDetails)
     yield takeLatest('FERTILIZE_PLANT', fertilizePlant)
     yield takeLatest('ADD_PLANT', addPlant)
+    yield takeLatest('DELETE_PLANT', deletePlant)
 }
 
 export default plantsSaga;

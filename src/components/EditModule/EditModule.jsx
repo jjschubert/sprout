@@ -115,7 +115,7 @@ class EditModule extends Component {
                         
                     </DialogContent>
                     <DialogActions>
-                    <DeleteAlert id={this.props.store.details[0].id}/>
+                    <DeleteAlert id={this.props.store.details[0].id}  history={this.props.history}/>
                         <Button onClick={this.handleClose} color="primary">
                             Cancel
             </Button>
