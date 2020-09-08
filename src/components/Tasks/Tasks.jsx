@@ -8,6 +8,11 @@ import './Tasks.css'
 // the component name TemplateClass with the name for the new
 // component.
 class Tasks extends Component {
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_TASKS' })
+  }
+
   state = {
     heading: 'Task Component',
   };
@@ -16,6 +21,7 @@ class Tasks extends Component {
     return (
       <div className='taskBkg'>
         <h2>{this.state.heading}</h2>
+        {JSON.stringify(this.props.store.tasks)}
       </div>
     );
   }

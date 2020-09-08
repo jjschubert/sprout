@@ -17,17 +17,16 @@ class Details extends Component {
         console.log(id)
         // this.props.dispatch({ type: 'FETCH_PLANTS' });
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
-
     }
 
-    waterPlant = (plant) => {;
+    waterPlant = (plant) => {
         console.log('mark watered', plant)
         this.props.dispatch({ type: 'WATER_PLANT', payload: plant });
         let id = this.props.match.params.plant_id;
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
     }
 
-    fertilizePlant = (plant) => {;
+    fertilizePlant = (plant) => {
         console.log('mark watered', plant)
         this.props.dispatch({ type: 'FERTILIZE_PLANT', payload: plant });
         let id = this.props.match.params.plant_id;
@@ -35,6 +34,7 @@ class Details extends Component {
     }
 
     render() {
+
 
         return (
             <div className='detailContainer'>
@@ -68,12 +68,14 @@ class Details extends Component {
 
                             <div className='section'>
                                 {this.props.store.details.map((item) => {
+                                    if (item.due_date !== null) {
                                     return (
                                         <Typography variant='body1' key={item.type_id}>
                                             <span className='bold'>{item.description}: </span>
                                             {moment(item.due_date).format('MMMM Do')}
                                         </Typography>
-                                    )
+                                    )}
+                                    else return false;
                                 })}
                             </div>
                                 <div className='section'>

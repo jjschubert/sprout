@@ -32,24 +32,28 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 2, req.body.hardenOff, 1, req.body.seedStart]
       
     } else if (req.body.hardenOff) {
-      //sends plantOutdoor task and hardenOff task
+      //creates plantOutdoor task and hardenOff task with duedate, start seed task w/o due date
       taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
       VALUES ($1, $2, $3, $4),
-      ($1, $2, $5, $6);`;
-      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 2, req.body.hardenOff]
+      ($1, $2, $5, $6),
+      ($1, $2, $7, $8);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 2, req.body.hardenOff, 1, null]
 
     } else if (req.body.seedStart) {
       //sends seedStart task and plantOutdoor task
       taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
       VALUES ($1, $2, $3, $4),
-      ($1, $2, $5, $6);`;
-      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 1, req.body.seedStart]
+      ($1, $2, $5, $6),
+      ($1, $2, $7, $8);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 1, req.body.seedStart, 2, null]
 
     } else {
       //sends plantOutdoor task, which is req'd on form
       taskQueryText = `INSERT INTO "tasks" ("plant_id", "user_id", "type_id", "due_date")
-      VALUES ($1, $2, $3, $4);`;
-      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors]
+      VALUES ($1, $2, $3, $4),
+      ($1, $2, $5, $6),
+      ($1, $2, $7, $8);`;
+      queryValues = [createPlantId, req.user.id, 3, req.body.plantOutdoors, 2, null, 3, null]
       
     }
     //second query makes tasks
