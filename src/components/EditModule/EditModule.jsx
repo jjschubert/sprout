@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {Button, InputLabel, TextField, Dialog, DialogActions, DialogContent, DialogTitle} from '@material-ui/core/';
 import moment from 'moment';
+import DeleteAlert from '../DeleteAlert/DeleteAlert'
 
 class EditModule extends Component {
     state = {
@@ -18,15 +19,17 @@ class EditModule extends Component {
         }
     };
 
-
+    //open edit module
     handleClickOpen = () => {
         this.setState({ open: true });
     };
 
+    //close edit module
     handleClose = () => {
         this.setState({ open: false });
     };
 
+    //submit changes
     handleSubmit = () => {
         this.setState({ open: false });
         console.log(this.state.plant)
@@ -109,8 +112,10 @@ class EditModule extends Component {
                             defaultValue={this.props.store.details[0].notes}
                             required onChange={(event) => this.handleChange(event, 'notes')}
                         />
+                        
                     </DialogContent>
                     <DialogActions>
+                    <DeleteAlert id={this.props.store.details[0].id}/>
                         <Button onClick={this.handleClose} color="primary">
                             Cancel
             </Button>

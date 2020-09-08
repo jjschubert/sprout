@@ -57,6 +57,7 @@ class PlantForm extends Component {
                         <TextField
                             variant="outlined"
                             type='text' className='formInputs'
+                            defaultValue={this.state.plantName}
                             onChange={(event) => this.handleChange(event, 'plantName')}
                             required />
                     </div>
@@ -64,6 +65,7 @@ class PlantForm extends Component {
                         <InputLabel>Start Seed Date</InputLabel>
                         <TextField
                             variant='outlined'
+                            defaultValue={this.state.seedStart}
                             id='seedStart' className='formInputs'
                             onChange={(event) => this.handleChange(event, 'seedStart')}
                             type='date' />
@@ -73,6 +75,7 @@ class PlantForm extends Component {
                         <TextField
                             variant='outlined'
                             id='hardenOff' className='formInputs'
+                            defaultValue={this.state.hardenOff}
                             onChange={(event) => this.handleChange(event, 'hardenOff')}
                             type='date' />
                     </div>
@@ -81,6 +84,7 @@ class PlantForm extends Component {
                         <TextField
                             variant='outlined' className='formInputs'
                             id='plantOutdoors'
+                            defaultValue={this.state.plantOutdoors}
                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
                             type='date' />
                     </div>
@@ -91,12 +95,14 @@ class PlantForm extends Component {
                         <TextField
                             variant='outlined' className='formInputs'
                             id='imagePath'
+                            defaultValue={this.state.imagePath}
                             onChange={(event) => this.handleChange(event, 'imagePath')}
                             type='text' />
                     </div>
                     <div>
                         <InputLabel>Notes</InputLabel>
                         <TextField
+                            defaultValue={this.state.notes}
                             variant='outlined' className='formInputs'
                             id='notes' style={{ width: 400 }}
                             onChange={(event) => this.handleChange(event, 'notes')}
