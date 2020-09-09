@@ -14,6 +14,7 @@ class NotificationIcon extends Component {
   componentDidMount() {
     this.props.dispatch({type: 'GET_CURRENT_TASKS'})
     this.props.dispatch({type: 'GET_OVERDUE_TASKS'})
+    console.log(this.props.store.current.length)
   }
 
 
@@ -21,7 +22,7 @@ class NotificationIcon extends Component {
     return (
       <>
         {this.props.store.user.id && 
-          <Link className='nav-link' to='/tasks'><Badge badgeContent={4} anchorOrigin={{
+          <Link className='nav-link' to='/tasks'><Badge badgeContent={this.props.store.current.length + this.props.store.overdue.length} anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',
           }}color="secondary"><EcoIcon /></Badge></Link>

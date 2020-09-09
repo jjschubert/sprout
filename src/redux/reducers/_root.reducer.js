@@ -6,6 +6,7 @@ import details from "./details.reducer";
 import tasks from "./tasks.reducer";
 import taskDetails from './taskDetails.reducer';
 import current from './currentTasks.reducer'
+import overdue from './overdue.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   tasks, 
   taskDetails,
   current,
+  overdue
 });
 
 export default rootReducer;
