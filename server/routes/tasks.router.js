@@ -5,6 +5,21 @@ const {
   rejectUnauthenticated
 } = require('../modules/authentication-middleware');
 
+router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
+  console.log(req.params.id)
+  let queryText = `UPDATE "tasks" 
+  SET task_status = true
+  WHERE "tasks".id = $1 AND "tasks".user_id = $2;`;
+
+  pool.query(queryText, [req.params.id, req.user.id])
+  .then((result) => {
+    res.sendStatus(200);
+}).catch((error) => {
+    console.log("error in markComplete", error);
+    res.sendStatus(500);
+});
+})
+
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   console.log('in task details route')
   let queryText = `SELECT "tasks".due_date, "tasks".type_id FROM "tasks"

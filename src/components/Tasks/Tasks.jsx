@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Tasks.css'
-import { Card, Button, Typography } from '@material-ui/core/';
+import { Card, Typography, IconButton } from '@material-ui/core/';
 import moment from 'moment';
 import CreateIcon from '@material-ui/icons/Create';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import Divider from '@material-ui/core/Divider';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -15,8 +16,6 @@ class Tasks extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_TASKS' })
-    this.props.dispatch({ type: 'FETCH_CURRENT_TASKS' })
-    this.props.dispatch({ type: 'FETCH_OVERDUE_TASKS' })
   }
 
   state = {
@@ -28,7 +27,9 @@ class Tasks extends Component {
   }
 
   handleComplete = (id) => {
+    this.props.dispatch({type: 'TASK_COMPLETE', payload: id})
     console.log(id)
+    this.props.dispatch({type: 'FETCH_TASKS'})
   }
 
   render() {
@@ -39,15 +40,18 @@ class Tasks extends Component {
       <div className='taskContainer'>
       {this.props.store.current.map((task) => {
         return (
-          <Card key={task.id} className='taskCard current' style={{background: '#f2f0a2'}}>
+          <Card key={task.id} className='taskCard current' style={{background: '#e8f6d5'}}>
+            <div className='cardContent'>
             <Typography variant='h6'>Task: {task.description}</Typography>
         <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
-        <div>
+        </div>
+        <Divider />
+        <div className='label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
-        <Button onClick={()=> this.handleEdit(task.id)}>
-        <CreateIcon className='inline right' /> </Button>
-        <Button onClick={()=> this.handleComplete(task.id)}>
-          <CheckCircleIcon className='inline right'  /> </Button>
+        <IconButton className='inline right' onClick={()=> this.handleComplete(task.id)} >
+          <CheckCircleIcon  /> </IconButton>
+          <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)} >
+          <CreateIcon  />  </IconButton>
         </div>
           </Card>
 
@@ -60,15 +64,18 @@ class Tasks extends Component {
       <div className='taskContainer'>
       {this.props.store.overdue.map((task) => {
         return (
-          <Card key={task.id} className='taskCard' style={{background: ' #ff9999'}}>
+          <Card key={task.id} className='taskCard' style={{background: '#f7d4e8'}}>
+            <div className='cardContent'>
             <Typography variant='h6'>Task: {task.description}</Typography>
         <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
-        <div className='overdue'>
+        </div>
+        <Divider />
+        <div className='overdue label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
-        <Button onClick={()=> this.handleEdit(task.id)}>
-        <CreateIcon className='inline right' /> </Button>
-        <Button onClick={()=> this.handleComplete(task.id)}>
-          <CheckCircleIcon className='inline right'  /> </Button>
+        <IconButton className='inline right' onClick={()=> this.handleComplete(task.id)} >
+          <CheckCircleIcon /> </IconButton>
+         <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
+          <CreateIcon /> </IconButton>
         </div>
           </Card>
 

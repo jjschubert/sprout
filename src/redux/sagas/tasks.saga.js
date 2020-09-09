@@ -43,12 +43,24 @@ function* fetchOverdueTasks() {
     }
 }
 
+function* sendTaskComplete(action) {
+    try {
+        yield axios.put(`/api/tasks/complete/${action.payload}`)
+        yield put({type: 'FETCH_TASKS'})
+        yield put({type: 'GET_CURRENT_TASKS'})
+        yield put({type: 'GET_OVERDUE_TASKS'})
+    } catch(error) {
+        console.log('error in taskComplete', error)
+    }
+}
+
 
 function* tasksSaga() {
     yield takeLatest('FETCH_TASKS', fetchTasks)
     yield takeLatest('GET_TASK_DETAILS', fetchTaskDetails)
     yield takeLatest('GET_CURRENT_TASKS', fetchCurrentTasks)
     yield takeLatest('GET_OVERDUE_TASKS', fetchOverdueTasks)
+    yield takeLatest('TASK_COMPLETE', sendTaskComplete)
 }
 
 export default tasksSaga;

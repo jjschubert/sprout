@@ -1,8 +1,9 @@
 .taskBkg {
     background-color: #efefef;
-    height: 800px;
+    height: 1300px;
     margin-top: 0px;
     padding-top: 1em;
+    padding-left: 2em;
 }
 
 .right {
@@ -17,8 +18,18 @@
 .taskContainer {
     display: flex;
     flex-flow: row wrap;
+    padding-left: 3em;
+    padding-bottom: 2em;
+    padding-top: .5em;
 }
 
-.overdue {
-    background-color: 	 #ff4d4d;
+
+.label {
+    padding: .5em;
+}
+
+.cardContent {
+    padding-bottom: 2em;
+    padding-top: .5em;
+    padding-left: .5em;
 }
