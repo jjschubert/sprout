@@ -10,5 +10,15 @@
 }
 
 .taskCard{
-    width: 30%
+    width: 20%;
+    margin: .25em;
+}
+
+.taskContainer {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.overdue {
+    background-color: 	 #ff4d4d;
 }
