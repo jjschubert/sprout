@@ -4,3 +4,11 @@
     margin-top: 0px;
     padding-top: 1em;
 }
+
+.right {
+    float: right;
+}
+
+.taskCard{
+    width: 30%
+}

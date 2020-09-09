@@ -23,7 +23,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.get('/', rejectUnauthenticated, (req, res) => {
     
       console.log('/tasks GET route');      
-      let queryText = `SELECT "tasks".plant_id, "tasks".type_id, "tasks".due_date, "tasks".task_status, "task_type".description, "plants".name
+      let queryText = `SELECT "tasks".plant_id, "tasks".type_id, "tasks".due_date, "tasks".task_status, "task_type".description, "plants".name, "tasks".id
       FROM "tasks" 
       JOIN "task_type" on "task_type".id = "tasks".type_id
       JOIN "plants" on "plants".id = "tasks".plant_id
