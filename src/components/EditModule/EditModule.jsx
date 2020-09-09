@@ -43,6 +43,7 @@ class EditModule extends Component {
         this.setState({ open: false });
         console.log(this.state.plant)
         this.props.dispatch({type: 'UPDATE_PLANT', payload: this.state.plant})
+        this.props.dispatch({type: 'GET_DETAILS', payload: this.props.id})
     };
 
     //handles form inputs

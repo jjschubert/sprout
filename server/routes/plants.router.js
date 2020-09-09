@@ -14,28 +14,28 @@ router.put('/:id', rejectUnauthenticated, async (req, res) => {
   let taskType3 = req.body[3];
   let seedQuery = `UPDATE "tasks"
   SET "due_date" = $2
-  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 1;`
+  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 1 AND "tasks".user_id = $3;`
   let hardenQuery = `UPDATE "tasks"
   SET "due_date" = $2
-  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 2;`
+  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 2 AND "tasks".user_id = $3;`
   let transplantQuery = `UPDATE "tasks"
   SET "due_date" = $2
-  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 3;`
+  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 3 AND "tasks".user_id = $3;`
 
   let plantQuery = 
   `UPDATE "plants"
   SET "last_fertilize" = $2, "last_water" = $3, "notes" = $4
-  WHERE "plants".id = $1;
+  WHERE "plants".id = $1 AND "plants".user_id = $5;
   `;
 
   let values = [req.params.id, taskType1, taskType2, taskType3, req.body.lastFertilize, req.body.lastWater, req.body.notes]
 
   try {
     await connection.query('BEGIN');
-    await connection.query(seedQuery, [req.params.id, taskType1])
-    await connection.query(hardenQuery, [req.params.id, taskType2])
-    await connection.query(transplantQuery, [req.params.id, taskType3])
-    await connection.query(plantQuery, [req.params.id, req.body.lastFertilize, req.body.lastWater, req.body.notes])
+    await connection.query(seedQuery, [req.params.id, taskType1, req.user.id])
+    await connection.query(hardenQuery, [req.params.id, taskType2, req.user.id])
+    await connection.query(transplantQuery, [req.params.id, taskType3, req.user.id])
+    await connection.query(plantQuery, [req.params.id, req.body.lastFertilize, req.body.lastWater, req.body.notes, req.user.id])
     await connection.query('COMMIT');
     res.sendStatus(200);
   } catch (error) {
@@ -55,9 +55,9 @@ router.put('/:id', rejectUnauthenticated, async (req, res) => {
 })
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-  let queryText = `DELETE FROM "plants" WHERE "id" = $1`
+  let queryText = `DELETE FROM "plants" WHERE "id" = $1 AND "plants".user_id = $2;`
 console.log(req.params.id)
-  pool.query(queryText, [req.params.id])
+  pool.query(queryText, [req.params.id, req.user.id])
   .then (result => {
     res.sendStatus(201)
   }).catch(error => {

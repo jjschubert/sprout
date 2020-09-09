@@ -10,8 +10,8 @@ router.put('/', rejectUnauthenticated, (req, res) => {
         console.log('/fertilize put route');
         let queryText = `UPDATE "plants"
         SET "last_fertilize" = current_timestamp
-        WHERE "id" = $1;`;
-        pool.query(queryText, [req.body.id]).then((result) => {
+        WHERE "id" = $1 AND "plants".user_id = $2;`;
+        pool.query(queryText, [req.body.id, req.user.id]).then((result) => {
             res.sendStatus(201);
         }).catch((error) => {
             console.log(error);
