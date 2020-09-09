@@ -5,6 +5,7 @@ import plants from './plants.reducer';
 import details from "./details.reducer";
 import tasks from "./tasks.reducer";
 import taskDetails from './taskDetails.reducer';
+import current from './currentTasks.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   plants,
   details, 
   tasks, 
-  taskDetails
+  taskDetails,
+  current,
 });
 
 export default rootReducer;

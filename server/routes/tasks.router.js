@@ -23,10 +23,11 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.get('/', rejectUnauthenticated, (req, res) => {
     
       console.log('/tasks GET route');      
-      let queryText = `SELECT "tasks".plant_id, "tasks".type_id, "tasks".due_date, "tasks".task_status, "task_type".description
+      let queryText = `SELECT "tasks".plant_id, "tasks".type_id, "tasks".due_date, "tasks".task_status, "task_type".description, "plants".name
       FROM "tasks" 
       JOIN "task_type" on "task_type".id = "tasks".type_id
-      WHERE "user_id" = $1;`;
+      JOIN "plants" on "plants".id = "tasks".plant_id
+      WHERE "tasks".user_id = $1;`;
       pool.query(queryText, [req.user.id]).then((result) => {
           res.send(result.rows);
       }).catch((error) => {

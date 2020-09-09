@@ -25,10 +25,30 @@ function* fetchTaskDetails(action) {
     }
 }
 
+function* fetchCurrentTasks() {
+    try {
+        let response = yield axios.get('/api/tasks');
+        yield put({type: 'SET_CURRENT_TASKS', payload: response.data})
+    } catch (error) {
+        console.log('error in currentTasks', error)
+    }
+}
+
+function* fetchOverdueTasks() {
+    try {
+        let response = yield axios.get('/api/tasks');
+        yield put({type: 'SET_OVERDUE_TASKS', payload: response.data})
+    } catch (error) {
+        console.log('error in overdueTasks', error)
+    }
+}
+
 
 function* tasksSaga() {
     yield takeLatest('FETCH_TASKS', fetchTasks)
     yield takeLatest('GET_TASK_DETAILS', fetchTaskDetails)
+    yield takeLatest('GET_CURRENT_TASKS', fetchCurrentTasks)
+    yield takeLatest('GET_OVERDUE_TASKS', fetchOverdueTasks)
 }
 
 export default tasksSaga;

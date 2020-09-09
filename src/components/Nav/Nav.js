@@ -6,6 +6,7 @@ import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import EcoIcon from '@material-ui/icons/Eco';
 import Badge from '@material-ui/core/Badge';
+import NotificationIcon from '../NotificationIcon/NotificationIcon';
 
 
 
@@ -47,6 +48,7 @@ const Nav = (props) => {
             horizontal: 'right',
           }}color="secondary"><EcoIcon /></Badge></Link>
         }
+        <NotificationIcon />
         {/* Show the link to the logout button if the user is logged in */}
         {props.store.user.id && (
             <LogOutButton className="nav-link" />
