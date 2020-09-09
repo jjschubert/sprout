@@ -15,9 +15,20 @@ function* fetchTasks() {
     }
 }
 
+//gets tasks for one plant
+function* fetchTaskDetails(action) {
+    try {
+        let response = yield axios.get(`/api/tasks/${action.payload}`)
+        yield put({type: 'SET_TASK_DETAILS', payload: response.data})
+    } catch (error) {
+        console.log('error in fetchTaskDetails', error)
+    }
+}
+
 
 function* tasksSaga() {
     yield takeLatest('FETCH_TASKS', fetchTasks)
+    yield takeLatest('GET_TASK_DETAILS', fetchTaskDetails)
 }
 
 export default tasksSaga;

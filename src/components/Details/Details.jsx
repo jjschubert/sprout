@@ -17,6 +17,7 @@ class Details extends Component {
         console.log(id)
         // this.props.dispatch({ type: 'FETCH_PLANTS' });
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
+        this.props.dispatch({type: 'GET_TASK_DETAILS', payload: id})
     }
 
     waterPlant = (plant) => {
@@ -86,7 +87,7 @@ class Details extends Component {
                         <div className='inline'>
                             <Button onClick={() => this.props.history.push('/dashboard')}>Back</Button>   
                         </div>
-                        <EditModule plant={this.props.store.details[0]} />
+                        <EditModule id={this.props.match.params.plant_id}/>
                     </Card>}
             </div>
         );

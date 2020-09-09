@@ -14,25 +14,35 @@ class EditModule extends Component {
             notes: this.props.store.details[0].notes,
             1: null,
             2: null,
-            3: null
+            3: null,
+            id: this.props.id,
 
         }
     };
 
+
     //open edit module
     handleClickOpen = () => {
-        this.setState({ open: true });
+        this.setState({ open: true,
+        plant:{
+            ...this.state.plant,
+            1: this.props.store.taskDetails[0].due_date,
+            2: this.props.store.taskDetails[1].due_date,
+            3: this.props.store.taskDetails[2].due_date
+        } });
+        console.log(this.state.plant)
     };
 
-    //close edit module
+    //close edit module w/o saving
     handleClose = () => {
         this.setState({ open: false });
     };
 
-    //submit changes
+    //submit changes and close module
     handleSubmit = () => {
         this.setState({ open: false });
         console.log(this.state.plant)
+        this.props.dispatch({type: 'UPDATE_PLANT', payload: this.state.plant})
     };
 
     //handles form inputs
@@ -88,6 +98,7 @@ class EditModule extends Component {
                        
                         {this.props.store.details.map((item) => {
                             let taskType = item.type_id;
+                            if (item.due_date !== null) {
                             return (
                                 <div key={item.type_id}>
                                 <InputLabel>{item.description}*</InputLabel>
@@ -99,8 +110,9 @@ class EditModule extends Component {
                                     variant="outlined"
                                     required onChange={(event) => this.handleChange(event, taskType)}
                                 />
-                                </div>
-                            )
+                                </div> 
+                            )}
+                            else return false;
                         })}
                         <TextField
                             margin="dense"

@@ -1,5 +1,5 @@
-let details;
-let noNullTasks;
+// let details;
+// let noNullTasks;
 
 const detailsReducer = (state = {}, action) => {
     switch (action.type) {

@@ -4,6 +4,7 @@ import user from './user.reducer';
 import plants from './plants.reducer';
 import details from "./details.reducer";
 import tasks from "./tasks.reducer";
+import taskDetails from './taskDetails.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   plants,
   details, 
-  tasks
+  tasks, 
+  taskDetails
 });
 
 export default rootReducer;

@@ -5,6 +5,55 @@ const {
   rejectUnauthenticated, rejectNonAdmin
 } = require('../modules/authentication-middleware');
 
+router.put('/:id', rejectUnauthenticated, async (req, res) => {
+  console.log('in plant PUT', 'id:', req.params.id, 'body', req.body)
+  const connection = await pool.connect()
+
+  let taskType1 = req.body[1];
+  let taskType2 = req.body[2];
+  let taskType3 = req.body[3];
+  let seedQuery = `UPDATE "tasks"
+  SET "due_date" = $2
+  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 1;`
+  let hardenQuery = `UPDATE "tasks"
+  SET "due_date" = $2
+  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 2;`
+  let transplantQuery = `UPDATE "tasks"
+  SET "due_date" = $2
+  WHERE "tasks".plant_id = $1 AND "tasks".type_id = 3;`
+
+  let plantQuery = 
+  `UPDATE "plants"
+  SET "last_fertilize" = $2, "last_water" = $3, "notes" = $4
+  WHERE "plants".id = $1;
+  `;
+
+  let values = [req.params.id, taskType1, taskType2, taskType3, req.body.lastFertilize, req.body.lastWater, req.body.notes]
+
+  try {
+    await connection.query('BEGIN');
+    await connection.query(seedQuery, [req.params.id, taskType1])
+    await connection.query(hardenQuery, [req.params.id, taskType2])
+    await connection.query(transplantQuery, [req.params.id, taskType3])
+    await connection.query(plantQuery, [req.params.id, req.body.lastFertilize, req.body.lastWater, req.body.notes])
+    await connection.query('COMMIT');
+    res.sendStatus(200);
+  } catch (error) {
+    await connection.query('ROLLBACK');
+    console.log('error in updatePlant', error)
+    res.sendStatus(500)
+  } finally {
+    connection.release()
+  }
+  // pool.query(queryText, values)
+  // .then(result => {
+  //   res.sendStatus(201)
+  // }).catch(error => {
+  //   console.log('error in updatePlant', error)
+  //   res.sendStatus(500);
+  // })
+})
+
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   let queryText = `DELETE FROM "plants" WHERE "id" = $1`
 console.log(req.params.id)
@@ -13,6 +62,7 @@ console.log(req.params.id)
     res.sendStatus(201)
   }).catch(error => {
     console.log('error in delete', error)
+    res.sendStatus(500);
   })
 })
 
