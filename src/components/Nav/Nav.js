@@ -14,6 +14,8 @@ const Nav = (props) => {
     text: 'Login / Register',
   };
 
+  
+
   if (props.store.user.id != null) {
     loginLinkData.path = '/dashboard';
     loginLinkData.text = 'Home';
@@ -25,6 +27,7 @@ const Nav = (props) => {
         <h2 className="nav-title">Sprout</h2>
       </Link>
       <div className="nav-right">
+      
         <Link className="nav-link" to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
@@ -37,16 +40,11 @@ const Nav = (props) => {
           <Link className='nav-link' to='/tasks'>Tasks</Link>
           
         }
+        <NotificationIcon />
          {props.store.user.id && 
           <Link className='nav-link' to='/add'>Add Plants</Link>
         }
-        {/* {props.store.user.id && 
-          <Link className='nav-link' to='/tasks'><Badge badgeContent={4} anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}color="secondary"><EcoIcon /></Badge></Link>
-        } */}
-        <NotificationIcon />
+     
         {/* Show the link to the logout button if the user is logged in */}
         {props.store.user.id && (
             <LogOutButton className="nav-link" />

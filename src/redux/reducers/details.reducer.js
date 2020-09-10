@@ -18,6 +18,8 @@ const detailsReducer = (state = {}, action) => {
         //return includes all tasks for that plant
         case 'SET_DETAILS':
             return action.payload
+        case 'UNSET_DETAILS':
+            return {}
         default:
             return state;
     }

@@ -14,6 +14,8 @@ class Tasks extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_TASKS' })
     this.props.dispatch({type: 'GET_UPCOMING_TASKS'})
+    this.props.dispatch({type: 'GET_OVERDUE_TASKS'})
+    this.props.dispatch({type: 'GET_CURRENT_TASKS'})
   }
 
   state = {
