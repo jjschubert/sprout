@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -13,6 +13,8 @@ const Nav = (props) => {
     path: '/login',
     text: 'Login / Register',
   };
+
+  
 
   if (props.store.user.id != null) {
     loginLinkData.path = '/dashboard';
