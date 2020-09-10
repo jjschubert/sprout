@@ -5,17 +5,15 @@ import './Tasks.css'
 import { Card, Typography, IconButton } from '@material-ui/core/';
 import moment from 'moment';
 import CreateIcon from '@material-ui/icons/Create';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Divider from '@material-ui/core/Divider';
+import TaskSnackbar from './TaskSnackbar';
 
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace
-// the component name TemplateClass with the name for the new
-// component.
+
 class Tasks extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_TASKS' })
+    this.props.dispatch({type: 'GET_UPCOMING_TASKS'})
   }
 
   state = {
@@ -48,8 +46,9 @@ class Tasks extends Component {
         <Divider />
         <div className='label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
-        <IconButton className='inline right' onClick={()=> this.handleComplete(task.id)} >
-          <CheckCircleIcon  /> </IconButton>
+        {/* <IconButton className='inline right' onClick={()=> this.handleComplete(task.id)} >
+          <CheckCircleIcon  /> </IconButton> */}
+          <TaskSnackbar id={task.id}/>
           <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)} >
           <CreateIcon  />  </IconButton>
         </div>
@@ -72,8 +71,7 @@ class Tasks extends Component {
         <Divider />
         <div className='overdue label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
-        <IconButton className='inline right' onClick={()=> this.handleComplete(task.id)} >
-          <CheckCircleIcon /> </IconButton>
+          <TaskSnackbar id={task.id}/>
          <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
           <CreateIcon /> </IconButton>
         </div>
@@ -83,6 +81,27 @@ class Tasks extends Component {
       })}
       </div>
     
+      <Typography variant='h4'>Upcoming Tasks</Typography>
+      <div className='taskContainer'>
+      {this.props.store.upcoming.map((task) => {
+        return (
+          <Card key={task.id} className='taskCard' style={{background: '#f7d4e8'}}>
+            <div className='cardContent'>
+            <Typography variant='h6'>Task: {task.description}</Typography>
+        <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
+        </div>
+        <Divider />
+        <div className='overdue label'>
+        <Typography variant='body1' className='inline' >{task.name}</Typography>
+          <TaskSnackbar id={task.id}/>
+         <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
+          <CreateIcon /> </IconButton>
+        </div>
+          </Card>
+
+        )
+      })}
+      </div>
     
       </div>
     );

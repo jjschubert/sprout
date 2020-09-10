@@ -5,6 +5,7 @@ const {
   rejectUnauthenticated
 } = require('../modules/authentication-middleware');
 
+//marks task complete in the DB
 router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
   console.log(req.params.id)
   let queryText = `UPDATE "tasks" 
@@ -20,6 +21,7 @@ router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
 });
 })
 
+//gets details for a single plant, for details card
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   console.log('in task details route')
   let queryText = `SELECT "tasks".due_date, "tasks".type_id FROM "tasks"
@@ -34,7 +36,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 })
 
 
-
+//gets all plants
 router.get('/', rejectUnauthenticated, (req, res) => {
     
       console.log('/tasks GET route');      
