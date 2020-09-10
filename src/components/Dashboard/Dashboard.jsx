@@ -31,8 +31,6 @@ class Dashboard extends Component {
                                 </div>
                                 <Button className='iconBtn' onClick={() => this.props.history.push('/details/' + plant.id)}>
                                     <InfoIcon /></Button>
-                                {/* <Button onClick={() => this.waterPlant(plant)} className='iconBtn'>
-                                    <OpacityIcon /> </Button> */}
                                     <WaterSnackbar plant={plant}/>
                             </div>
                         </Card>

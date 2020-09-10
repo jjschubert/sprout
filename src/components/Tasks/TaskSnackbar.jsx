@@ -26,6 +26,7 @@ class TaskSnackbar extends Component {
   handleRefresh = () => {
     this.props.dispatch({type: 'GET_CURRENT_TASKS'});
     this.props.dispatch({type: 'GET_OVERDUE_TASKS'});
+    this.props.dispatch({type: 'GET_UPCOMING_TASKS'});
   }
 
   handleClose = (event, reason) => {

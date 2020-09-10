@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Tasks.css'
-import { Card, Typography, IconButton } from '@material-ui/core/';
+import { Card, Typography } from '@material-ui/core/';
 import moment from 'moment';
-import CreateIcon from '@material-ui/icons/Create';
 import Divider from '@material-ui/core/Divider';
 import TaskSnackbar from './TaskSnackbar';
+import TaskEdit from './TaskEdit';
 
 
 class Tasks extends Component {
@@ -46,11 +46,10 @@ class Tasks extends Component {
         <Divider />
         <div className='label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
-        {/* <IconButton className='inline right' onClick={()=> this.handleComplete(task.id)} >
-          <CheckCircleIcon  /> </IconButton> */}
           <TaskSnackbar id={task.id}/>
-          <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)} >
-          <CreateIcon  />  </IconButton>
+          <TaskEdit task={task}/>
+          {/* <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)} >
+          <CreateIcon  />  </IconButton> */}
         </div>
           </Card>
 
@@ -72,8 +71,9 @@ class Tasks extends Component {
         <div className='overdue label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
           <TaskSnackbar id={task.id}/>
-         <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
-          <CreateIcon /> </IconButton>
+          <TaskEdit task={task}/>
+         {/* <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
+          <CreateIcon /> </IconButton> */}
         </div>
           </Card>
 
@@ -85,17 +85,18 @@ class Tasks extends Component {
       <div className='taskContainer'>
       {this.props.store.upcoming.map((task) => {
         return (
-          <Card key={task.id} className='taskCard' style={{background: '#f7d4e8'}}>
+          <Card key={task.id} className='taskCard' style={{background: '#deeded'}}>
             <div className='cardContent'>
             <Typography variant='h6'>Task: {task.description}</Typography>
         <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
         </div>
         <Divider />
-        <div className='overdue label'>
+        <div className='upcoming label'>
         <Typography variant='body1' className='inline' >{task.name}</Typography>
           <TaskSnackbar id={task.id}/>
-         <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
-          <CreateIcon /> </IconButton>
+          <TaskEdit task={task}/>
+         {/* <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
+          <CreateIcon /> </IconButton> */}
         </div>
           </Card>
 

@@ -32,10 +32,7 @@ const customTheme = createMuiTheme({
     },
     secondary: {
       main: '#b32274',
-    },
-    info: {
-      main: '#2196f3',
-    },
+    }
   },
 });
 
