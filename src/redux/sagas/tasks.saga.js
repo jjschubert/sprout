@@ -8,6 +8,7 @@ function* fetchTasks() {
     //get request
    let response = yield axios.get('/api/tasks');
     yield put({type: 'SET_TASKS', payload: response.data})
+   
     } catch (error) {
         console.log('err in fetchTasks', error)
     }
@@ -28,6 +29,7 @@ function* fetchCurrentTasks() {
     try {
         let response = yield axios.get('/api/tasks');
         yield put({type: 'SET_CURRENT_TASKS', payload: response.data})
+        console.log('got to set current')
     } catch (error) {
         console.log('error in currentTasks', error)
     }
@@ -38,6 +40,7 @@ function* fetchOverdueTasks() {
     try {
         let response = yield axios.get('/api/tasks');
         yield put({type: 'SET_OVERDUE_TASKS', payload: response.data})
+        console.log('got to set overdue')
     } catch (error) {
         console.log('error in overdueTasks', error)
     }
@@ -66,6 +69,7 @@ function* sendUpdatedTask(action) {
     try {
         yield axios.put('/api/tasks', action.payload)
         yield put({type: 'FETCH_TASKS'})
+     
     } catch (error) {
         console.log('error in updateTask', error)
     }
