@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 class NotificationIcon extends Component {
  
   componentDidMount() {
+    this.props.dispatch({type: 'GET_TASKS'})
     this.props.dispatch({type: 'GET_CURRENT_TASKS'})
     this.props.dispatch({type: 'GET_OVERDUE_TASKS'})
     console.log(this.props.store.current.length)
