@@ -5,6 +5,22 @@ const {
   rejectUnauthenticated
 } = require('../modules/authentication-middleware');
 
+
+//updates task due_date in the DB
+router.put('/', rejectUnauthenticated, (req, res) => {
+  console.log(req.body)
+  let queryText = `UPDATE "tasks"
+  SET due_date = $1
+  WHERE "tasks".id = $2 AND "tasks".user_id = $3; `;
+  pool.query(queryText, [req.body.due_date, req.body.id, req.user.id])
+  .then(result => {
+    res.sendStatus(201)
+  }).catch( error => {
+    console.log('error in updateTask', error)
+    res.sendStatus(500);
+  })
+})
+
 //marks task complete in the DB
 router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
   console.log(req.params.id)

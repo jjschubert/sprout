@@ -48,8 +48,6 @@ class Tasks extends Component {
         <Typography variant='body1' className='inline' >{task.name}</Typography>
           <TaskSnackbar id={task.id}/>
           <TaskEdit task={task}/>
-          {/* <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)} >
-          <CreateIcon  />  </IconButton> */}
         </div>
           </Card>
 
@@ -72,8 +70,6 @@ class Tasks extends Component {
         <Typography variant='body1' className='inline' >{task.name}</Typography>
           <TaskSnackbar id={task.id}/>
           <TaskEdit task={task}/>
-         {/* <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
-          <CreateIcon /> </IconButton> */}
         </div>
           </Card>
 
@@ -95,8 +91,6 @@ class Tasks extends Component {
         <Typography variant='body1' className='inline' >{task.name}</Typography>
           <TaskSnackbar id={task.id}/>
           <TaskEdit task={task}/>
-         {/* <IconButton className='inline right' onClick={()=> this.handleEdit(task.id)}>
-          <CreateIcon /> </IconButton> */}
         </div>
           </Card>
 

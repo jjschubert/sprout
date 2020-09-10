@@ -31,16 +31,15 @@ class taskEdit extends Component {
         this.setState({ open: false });
         console.log(this.state)
         this.props.dispatch({type: 'UPDATE_TASK', payload: this.state})
+        this.props.dispatch({type: 'FETCH_TASKS'})
+        this.props.dispatch({type: 'FETCH_OVERDUE_TASKS'})
     };
 
     //handles form inputs
     handleChange = (event, propertyName) => {
         this.setState({
             ...this.state,
-            plant: {
-                ...this.state.plant,
                 [propertyName]: event.target.value,
-            }
         })
     }
 
