@@ -8,6 +8,7 @@ import NotificationIcon from '../NotificationIcon/NotificationIcon';
 
 
 
+
 const Nav = (props) => {
   let loginLinkData = {
     path: '/login',
@@ -23,9 +24,11 @@ const Nav = (props) => {
 
   return (
     <div className="nav">
+      <div className="nav-left">
       <Link to="/home">
         <h2 className="nav-title">Sprout</h2>
       </Link>
+      </div>
       <div className="nav-right">
       
         <Link className="nav-link" to={loginLinkData.path}>
@@ -53,6 +56,7 @@ const Nav = (props) => {
         <Link className="nav-link" to="/about">
           About
         </Link>
+        {/* <Drawer /> */}
       </div>
     </div>
   );

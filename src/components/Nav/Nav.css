@@ -5,6 +5,7 @@
     color: #f2f2f2;
     padding-left: 10px;
     font-weight: 600;
+    font-family: 'Raleway', sans-serif;
 }
 
 .nav {
@@ -33,6 +34,31 @@
   background-color: #547E1A;
 }
 
-.nav-right {
+.drawer-link:hover {
+  background-color: #efefef;
+}
+
+/* .nav-right {
   float: right;
+  display: inline-block;
+}
+
+.nav-left {
+  float: left;
+  display: inline-block;
+} */
+
+.drawer-link {
+  color:#689B21;
+  text-align: center;
+  padding: 4px 10px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+
+  /* these last two make the logout button in
+  the nav bar look like another link */
+  border:none;
+  cursor: pointer;
+  outline:0;
 }

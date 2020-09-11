@@ -75,6 +75,15 @@ function* sendUpdatedTask(action) {
     }
 }
 
+function* taskObj() {
+    try {
+        let response = yield axios.get('/api/tasks2')
+        yield put({type: 'SET_TASK_OBJ', payload: response.data})
+    } catch (error) {
+        console.log('error in updateTask', error)
+    }
+}
+
 
 function* tasksSaga() {
     yield takeLatest('FETCH_TASKS', fetchTasks)
@@ -84,6 +93,7 @@ function* tasksSaga() {
     yield takeLatest('TASK_COMPLETE', sendTaskComplete)
     yield takeLatest('GET_UPCOMING_TASKS', fetchUpcomingTasks)
     yield takeLatest('UPDATE_TASK', sendUpdatedTask)
+    yield takeLatest('FETCH_TASK_OBJ', taskObj)
 }
 
 export default tasksSaga;
