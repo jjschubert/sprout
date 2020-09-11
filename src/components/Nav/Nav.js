@@ -5,8 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import NotificationIcon from '../NotificationIcon/NotificationIcon';
-import {AppBar} from '@material-ui/core'
-import Drawer from './Drawer.js';
+
 
 
 

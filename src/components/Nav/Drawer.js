@@ -1,19 +1,18 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -37,6 +36,7 @@ const useStyles = makeStyles((customTheme) => ({
             easing: customTheme.transitions.easing.sharp,
             duration: customTheme.transitions.duration.leavingScreen,
         }),
+        marginBottom: 0,
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -83,6 +83,7 @@ const useStyles = makeStyles((customTheme) => ({
         }),
         marginRight: 0,
     },
+ 
 }));
 
 function NavDrawer(props) {
@@ -122,17 +123,18 @@ function NavDrawer(props) {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
-                position="fixed"
+                position="static"
+                style={{ margin: 0 }}
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
                 })}
-                className='app'
             >
                 <Toolbar>
-
+                <Box display='flex' flexGrow={1}>
                     <Link to="/home">
                         <h2 className="nav-title">Sprout</h2>
                     </Link>
+                    </Box>
                     <div className="nav-right">
                     <NotificationIcon />
                     <Link className="nav-link" to={loginLinkData.path}>
@@ -148,7 +150,7 @@ function NavDrawer(props) {
 
 
                     {props.store.user.id &&
-                        <IconButton
+                        <IconButton style={{marginTop: 10}}
                             color="inherit"
                             aria-label="open drawer"
                             edge="end"
@@ -156,7 +158,7 @@ function NavDrawer(props) {
                             className={clsx(open && classes.hide)}
                         >
                             <MenuIcon />
-                        </IconButton>}
+                        </IconButton >}
                         </div>
                 </Toolbar>
             </AppBar>
@@ -209,7 +211,7 @@ function NavDrawer(props) {
                                 About
                         </Link></ListItem>
                         {props.store.user.id && (
-                            <ListItem><LogOutButton className="drawer-link" /></ListItem>
+                            <ListItem onClick={handleDrawerClose}><LogOutButton className="drawer-link" /></ListItem>
                         )}
 
 
