@@ -17,7 +17,6 @@ class AddPlant extends Component {
   getByValue = (arr, value) => {
     for (let i=0; i < arr.length; i++) {
       if (arr[i].type_id === value) {
-        console.log(arr[i].due_date)
           if (arr[i].due_date == null) {
             return '-'
           } else {
@@ -54,7 +53,7 @@ class AddPlant extends Component {
           {this.props.store.taskObj.map((plant) => 
           <TableRow key={plant.plant_id}>
             <TableCell>{plant.plantTasks[0].plantname}</TableCell>
-           <TableCell align="left">{this.getByValue(plant.plantTasks, 1)}</TableCell>
+           <TableCell align="">{this.getByValue(plant.plantTasks, 1)}</TableCell>
            <TableCell align="left">{this.getByValue(plant.plantTasks, 2)}</TableCell>
            <TableCell align="left">{this.getByValue(plant.plantTasks, 3)}</TableCell>
           <TableCell align="left">

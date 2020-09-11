@@ -9,7 +9,7 @@ import EditModule from '../EditModule/EditModule.jsx';
 
 class Details extends Component {
     state = {
-        heading: 'Details Component',
+        update: false
     };
 
     componentDidMount() {
@@ -25,6 +25,8 @@ class Details extends Component {
         this.props.dispatch({ type: 'WATER_PLANT', payload: plant });
         let id = this.props.match.params.plant_id;
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
+        this.setState({ update: !this.state.update})
+      
     }
 
     fertilizePlant = (plant) => {
@@ -32,6 +34,7 @@ class Details extends Component {
         this.props.dispatch({ type: 'FERTILIZE_PLANT', payload: plant });
         let id = this.props.match.params.plant_id;
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
+        this.setState({ update: !this.state.update})
     }
 
     render() {

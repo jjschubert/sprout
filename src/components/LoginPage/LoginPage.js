@@ -4,6 +4,11 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import LoginForm from '../LoginForm/LoginForm';
 
 class LoginPage extends Component {
+
+  componentDidMount() {
+    document.body.classList.add('forImage');
+  }
+
   render() {
     return (
       <div>

@@ -11,6 +11,7 @@ import './PlantForm.css';
 // component.
 class PlantForm extends Component {
     state = {
+        update: false,
         plantName: '',
         seedStart: '',
         hardenOff: '',
@@ -31,12 +32,13 @@ class PlantForm extends Component {
             console.log(this.state.newPlant)
             this.props.dispatch({type: 'ADD_PLANT', payload: this.state})
             this.setState({
+                ...this.state,
                     plantName: '',
                     seedStart: '',
                     hardenOff: '',
                     plantOutdoors: '',
                     imagePath: '',
-                    notes: ''
+                    notes: '',
             })
             this.props.dispatch({type: 'FETCH_TASK_OBJ'})
         }
