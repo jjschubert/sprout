@@ -5,6 +5,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import NotificationIcon from '../NotificationIcon/NotificationIcon';
+import {AppBar} from '@material-ui/core'
+import Drawer from './Drawer.js';
 
 
 
@@ -23,9 +25,11 @@ const Nav = (props) => {
 
   return (
     <div className="nav">
+      <div className="nav-left">
       <Link to="/home">
         <h2 className="nav-title">Sprout</h2>
       </Link>
+      </div>
       <div className="nav-right">
       
         <Link className="nav-link" to={loginLinkData.path}>
@@ -53,6 +57,7 @@ const Nav = (props) => {
         <Link className="nav-link" to="/about">
           About
         </Link>
+        {/* <Drawer /> */}
       </div>
     </div>
   );

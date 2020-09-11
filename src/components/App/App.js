@@ -23,6 +23,7 @@ import Tasks from '../Tasks/Tasks.jsx'
 import AddPlant from '../AddPlant/AddPlant.jsx'
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Drawer from '../Nav/Drawer.js'
 
 
 const customTheme = createMuiTheme({
@@ -46,7 +47,8 @@ class App extends Component {
       <ThemeProvider theme={customTheme}>
       <Router>
         <div>
-          <Nav />
+          {/* <Nav /> */}
+          <Drawer />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
