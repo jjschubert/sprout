@@ -47,7 +47,7 @@ class AddPlant extends Component {
         </TableBody>
       </Table>
     </Paper>
-    {JSON.stringify(this.props.store.tasks)}
+   
       </div>
     );
   }

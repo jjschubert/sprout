@@ -11,38 +11,32 @@ import './PlantForm.css';
 // component.
 class PlantForm extends Component {
     state = {
-        newPlant: {
         plantName: '',
         seedStart: '',
         hardenOff: '',
         plantOutdoors: '',
         imagePath: '',
-        notes: ''}
+        notes: ''
     };
 
         //tracks form changes
         handleChange = (event, propertyName) => {
             this.setState({
                 ...this.state,
-                newPlant:
-                {...this.state.newPlant,
-                    [propertyName]: event.target.value}
-            })
+                    [propertyName]: event.target.value})
         }
 
         addPlant = (event) => {
             event.preventDefault();
             console.log(this.state.newPlant)
-            this.props.dispatch({type: 'ADD_PLANT', payload: this.state.newPlant})
+            this.props.dispatch({type: 'ADD_PLANT', payload: this.state})
             this.setState({
-                ...this.state,
-                newPlant:
-                {plantName: '',
+                    plantName: '',
                     seedStart: '',
                     hardenOff: '',
                     plantOutdoors: '',
                     imagePath: '',
-                    notes: '' }
+                    notes: ''
             })
         }
 
@@ -66,7 +60,7 @@ class PlantForm extends Component {
                         <TextField
                             variant='outlined'
                             defaultValue={this.state.seedStart}
-                            id='seedStart' className='formInputs'
+                            className='formInputs'
                             onChange={(event) => this.handleChange(event, 'seedStart')}
                             type='date' />
                     </div>
@@ -74,7 +68,7 @@ class PlantForm extends Component {
                         <InputLabel>Harden Off Date</InputLabel>
                         <TextField
                             variant='outlined'
-                            id='hardenOff' className='formInputs'
+                            className='formInputs'
                             defaultValue={this.state.hardenOff}
                             onChange={(event) => this.handleChange(event, 'hardenOff')}
                             type='date' />
@@ -83,7 +77,6 @@ class PlantForm extends Component {
                         <InputLabel>Plant Outdoors*</InputLabel>
                         <TextField
                             variant='outlined' className='formInputs'
-                            id='plantOutdoors'
                             defaultValue={this.state.plantOutdoors}
                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
                             type='date' />
@@ -94,7 +87,6 @@ class PlantForm extends Component {
                         <InputLabel>Image Path*</InputLabel>
                         <TextField
                             variant='outlined' className='formInputs'
-                            id='imagePath'
                             defaultValue={this.state.imagePath}
                             onChange={(event) => this.handleChange(event, 'imagePath')}
                             type='text' />
@@ -104,7 +96,7 @@ class PlantForm extends Component {
                         <TextField
                             defaultValue={this.state.notes}
                             variant='outlined' className='formInputs'
-                            id='notes' style={{ width: 400 }}
+                            style={{ width: 400 }}
                             onChange={(event) => this.handleChange(event, 'notes')}
                             type='text' />
                     </div>
