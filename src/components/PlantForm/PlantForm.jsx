@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button, InputLabel } from '@material-ui/core';
+import { TextField, Button, InputLabel, Paper } from '@material-ui/core';
 import './PlantForm.css';
 
 
@@ -38,11 +38,12 @@ class PlantForm extends Component {
                     imagePath: '',
                     notes: ''
             })
+            this.props.dispatch({type: 'FETCH_TASK_OBJ'})
         }
 
     render() {
         return (
-
+            <Paper style={{paddingBottom: 25}}>
             <div className='formDiv' >
                 <form onSubmit={this.addPlant}>
                 <div className='inputContainer'>
@@ -104,6 +105,7 @@ class PlantForm extends Component {
                 </div>
                 </form>
             </div>
+            </Paper>
         );
     }
 }
