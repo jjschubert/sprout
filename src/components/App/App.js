@@ -19,7 +19,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Dashboard from '../Dashboard/Dashboard.jsx';
 import Details from '../Details/Details.jsx';
 import Tasks from '../Tasks/Tasks.jsx'
-import AddPlant from '../AddPlant/AddPlant.jsx'
+import AddPlant from '../PlantTable/PlantTable.jsx'
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Drawer from '../Nav/Drawer.js'

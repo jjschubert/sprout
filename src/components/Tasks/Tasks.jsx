@@ -38,45 +38,51 @@ class Tasks extends Component {
       
       <Typography variant='h4'>Today's Tasks</Typography>
       <div className='taskContainer'>
-      {this.props.store.current.map((task) => {
-        return (
-          <Card key={task.id} className='taskCard current' style={{background: '#e8f6d5'}}>
-            <div className='cardContent'>
-            <Typography variant='h6'>Task: {task.description}</Typography>
-        <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
-        </div>
-        <Divider />
-        <div className='label'>
-        <Typography variant='body1' className='inline' >{task.name}</Typography>
-          <TaskSnackbar id={task.id}/>
-          <TaskEdit task={task}/>
-        </div>
-          </Card>
-
-        )
-      })}
+        {this.props.store.current[0]? 
+        this.props.store.current.map((task) => {
+          return (
+            <Card key={task.id} className='taskCard current' style={{background: '#e8f6d5'}}>
+              <div className='cardContent'>
+              <Typography variant='h6'>Task: {task.description}</Typography>
+          <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
+          </div>
+          <Divider />
+          <div className='label'>
+          <Typography variant='body1' className='inline' >{task.name}</Typography>
+            <TaskSnackbar id={task.id}/>
+            <TaskEdit task={task}/>
+          </div>
+            </Card>
+  
+          )
+        })
+        : <Typography variant='h6' style={{color: '#b32274'}}>Congrats! You're all caught up</Typography>}
+      
       </div>
      
      
       <Typography variant='h4'>Overdue Tasks</Typography>
       <div className='taskContainer'>
-      {this.props.store.overdue.map((task) => {
-        return (
-          <Card key={task.id} className='taskCard' style={{background: '#f7d4e8'}}>
-            <div className='cardContent'>
-            <Typography variant='h6'>Task: {task.description}</Typography>
-        <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
-        </div>
-        <Divider />
-        <div className='overdue label'>
-        <Typography variant='body1' className='inline' >{task.name}</Typography>
-          <TaskSnackbar id={task.id}/>
-          <TaskEdit task={task}/>
-        </div>
-          </Card>
-
-        )
-      })}
+        {this.props.store.overdue[0] ? 
+        this.props.store.overdue.map((task) => {
+          return (
+            <Card key={task.id} className='taskCard' style={{background: '#f7d4e8'}}>
+              <div className='cardContent'>
+              <Typography variant='h6'>Task: {task.description}</Typography>
+          <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
+          </div>
+          <Divider />
+          <div className='overdue label'>
+          <Typography variant='body1' className='inline' >{task.name}</Typography>
+            <TaskSnackbar id={task.id}/>
+            <TaskEdit task={task}/>
+          </div>
+            </Card>
+  
+          )
+        })
+      : <Typography variant='h6' style={{color: '#b32274'}}>Wow, you're on top of things!</Typography>}
+      
       </div>
     
       <Typography variant='h4'>Upcoming Tasks</Typography>

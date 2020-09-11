@@ -6,12 +6,18 @@ import moment from 'moment';
 import DeleteAlert from '../DeleteAlert/DeleteAlert'
 
 class EditModule extends Component {
+
+componentDidMount() {
+    this.props.dispatch({ type: 'GET_DETAILS', payload: this.props.id })
+    this.props.dispatch({type: 'GET_TASK_DETAILS', payload: this.props.id})
+}
+
     state = {
         open: false,
         plant: {
-            lastWater: this.props.store.details[0].last_water,
-            lastFertilize: this.props.store.details[0].last_fertilize,
-            notes: this.props.store.details[0].notes,
+            lastWater: '',
+            lastFertilize: '',
+            notes: '',
             1: null,
             2: null,
             3: null,
@@ -25,7 +31,9 @@ class EditModule extends Component {
     handleClickOpen = () => {
         this.setState({ open: true,
         plant:{
-            ...this.state.plant,
+            lastWater: this.props.store.details[0].last_water,
+            lastFertilize: this.props.store.details[0].last_fertilize,
+            notes: this.props.store.details[0].notes,
             1: this.props.store.taskDetails[0].due_date,
             2: this.props.store.taskDetails[1].due_date,
             3: this.props.store.taskDetails[2].due_date
@@ -61,10 +69,11 @@ class EditModule extends Component {
 
         return (
             <div className='inline'>
+                
                 <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
                     Edit Plant
         </Button>
-            
+            {this.props.store.details[0] &&
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
@@ -79,7 +88,7 @@ class EditModule extends Component {
                             fullWidth
                             variant="outlined"
                             id="lastWatered"
-                            defaultValue={this.props.store.details[0].last_water ?
+                            defaultValue={this.props.store.details[0]?
                                 moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
                                 : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}
@@ -91,7 +100,7 @@ class EditModule extends Component {
                             type='date'
                             variant="outlined"
                             id="lastFertilized"
-                            defaultValue={this.props.store.details[0].last_fertilize ?
+                            defaultValue={this.props.store.details[0]?
                                 moment(this.props.store.details[0].last_fertilize).format('yyyy-MM-DD')
                                 : 'yyyy-MM-dd'}
                             required onChange={(event) => this.handleChange(event, 'lastFertilize')}
@@ -122,7 +131,8 @@ class EditModule extends Component {
                             rows={4}
                             fullWidth
                             variant="outlined"
-                            defaultValue={this.props.store.details[0].notes}
+                            defaultValue={this.props.store.details[0] &&
+                                this.props.store.details[0].notes}
                             required onChange={(event) => this.handleChange(event, 'notes')}
                         />
                         
@@ -136,7 +146,7 @@ class EditModule extends Component {
                             Save Changes
             </Button>
                     </DialogActions>
-                </Dialog>
+                            </Dialog> }
             </div>
         );
     }

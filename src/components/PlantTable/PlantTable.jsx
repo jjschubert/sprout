@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import './AddPlant.css';
+import './PlantTable.css';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Divider} from '@material-ui/core';
-// import EditModule from '../EditModule/EditModule'
+import EditModule from '../EditModule/EditModule'
 import PlantForm from '../PlantForm/PlantForm';
 import moment from 'moment';
 import DeleteAlert from '../DeleteAlert/DeleteAlert.jsx'
@@ -21,7 +21,7 @@ class AddPlant extends Component {
           if (arr[i].due_date == null) {
             return '-'
           } else {
-            return moment(arr[i].due_date).format("MMM Do YY")
+            return moment(arr[i].due_date).format("MMM Do")
           }
       }
     }
@@ -38,7 +38,7 @@ class AddPlant extends Component {
         <Divider />
         <PlantForm />
         <Paper style={{padding:20}}>
-      <Table>
+      <Table style={{opacity: 1}}>
         <TableHead>
           <TableRow>
             <TableCell style={{fontWeight: 'bold', fontSize: 16}}>Plant Name</TableCell>
@@ -49,7 +49,7 @@ class AddPlant extends Component {
             <TableCell align="left" style={{fontWeight: 'bold', fontSize: 16}}>Delete</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody style={{opacity: 1}}>
 
           {this.props.store.taskObj.map((plant) => 
           <TableRow key={plant.plant_id}>
@@ -57,7 +57,9 @@ class AddPlant extends Component {
            <TableCell align="left">{this.getByValue(plant.plantTasks, 1)}</TableCell>
            <TableCell align="left">{this.getByValue(plant.plantTasks, 2)}</TableCell>
            <TableCell align="left">{this.getByValue(plant.plantTasks, 3)}</TableCell>
-          <TableCell align="left">Placeholder</TableCell>
+          <TableCell align="left">
+            <EditModule id={plant.plant_id}/>
+          </TableCell>
           <TableCell align="left"><DeleteAlert id={plant.plant_id}/></TableCell>
           </TableRow>
           )}

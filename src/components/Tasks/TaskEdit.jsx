@@ -28,7 +28,6 @@ class taskEdit extends Component {
 
     //submit changes and close module
     handleSubmit = () => {
-        
         console.log(this.state)
         this.props.dispatch({type: 'UPDATE_TASK', payload: this.state})
         this.props.dispatch({type: 'FETCH_TASKS'})
