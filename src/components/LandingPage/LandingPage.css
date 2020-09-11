@@ -1,10 +1,7 @@
-body {
+.forImage {
   background-image: url('/images/bluesprout.jpg');
   background-size: cover
-  
 }
-
-
 
 .container {
   background: rgba(215, 217, 215, 0.8);

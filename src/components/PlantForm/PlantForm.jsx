@@ -101,7 +101,7 @@ class PlantForm extends Component {
                             onChange={(event) => this.handleChange(event, 'notes')}
                             type='text' />
                     </div>
-                    <Button color='secondary' type='submit'>Add Plant</Button>
+                    <Button color='secondary' variant='contained' style={{height: 35, marginTop: 25, marginLeft: 5}}type='submit'>Add Plant</Button>
                 </div>
                 </form>
             </div>

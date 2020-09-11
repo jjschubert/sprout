@@ -12,13 +12,16 @@ class LandingPage extends Component {
     heading: 'Class Component',
   };
 
+  componentDidMount() {
+    document.body.classList.add('forImage');
+  }
   onLogin = (event) => {
     this.props.history.push('/login');
   };
 
   render() {
     return (
-      <div className='forImage'>
+     
       <div className="container">
 
         <div className="grid">
@@ -46,7 +49,7 @@ class LandingPage extends Component {
           </div>
         </div>
       </div>
-      </div>
+    
     );
   }
 }

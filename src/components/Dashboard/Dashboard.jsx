@@ -8,6 +8,7 @@ import WaterSnackbar from '../WaterSnackbar/WaterSnackbar';
 
 
 
+
 class Dashboard extends Component {
     state = {
         heading: 'Dashboard',
@@ -15,6 +16,8 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PLANTS' })
+        this.props.dispatch({type: 'GET_OVERDUE_TASKS'})
+        this.props.dispatch({type: 'GET_CURRENT_TASKS'})
     }
 
     render() {

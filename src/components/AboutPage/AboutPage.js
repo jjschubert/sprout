@@ -8,6 +8,7 @@ import './AboutPage.css';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
+  
   <div className="container">
     <div className='textBox'>
       <Typography variant='h5' color='secondary'>

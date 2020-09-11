@@ -1,11 +1,3 @@
-.textBox {
-    padding: 1em 8em;
-}
-
-#aboutBlurb {
-    padding: 1em 5em;
-}
-
 .forImage {
     background-image: url('/images/bluesprout.jpg');
     background-size: cover
