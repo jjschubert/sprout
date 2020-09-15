@@ -22,7 +22,6 @@ componentDidMount() {
             2: null,
             3: null,
             id: this.props.id,
-
         }
     };
 
@@ -37,7 +36,8 @@ componentDidMount() {
             notes: this.props.store.details[0].notes,
             1: this.props.store.taskDetails[0].due_date,
             2: this.props.store.taskDetails[1].due_date,
-            3: this.props.store.taskDetails[2].due_date
+            3: this.props.store.taskDetails[2].due_date,
+            id: this.props.id,
         } });
         console.log(this.state.plant)
     };
@@ -90,7 +90,7 @@ componentDidMount() {
                             fullWidth
                             variant="outlined"
                             id="lastWatered"
-                            value={this.props.store.details[0].last_water ?
+                            defaultValue={this.props.store.details[0].last_water ?
                                 moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
                                 : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}
@@ -103,7 +103,7 @@ componentDidMount() {
                             type='date'
                             variant="outlined"
                             id="lastFertilized"
-                            value={this.props.store.details[0]?
+                            defaultValue={this.props.store.details[0]?
                                 moment(this.props.store.details[0].last_fertilize).format('yyyy-MM-DD')
                                 : 'yyyy-MM-dd'}
                             required onChange={(event) => this.handleChange(event, 'lastFertilize')}
@@ -119,7 +119,7 @@ componentDidMount() {
                                 InputLabelProps={{ shrink: true }} 
                                     label={item.description}
                                     margin="dense"
-                                    value={moment(item.due_date).format('yyyy-MM-DD')}
+                                    defaultValue={moment(item.due_date).format('yyyy-MM-DD')}
                                     fullWidth
                                     type='date'
                                     variant="outlined"
@@ -136,7 +136,7 @@ componentDidMount() {
                             rows={4}
                             fullWidth
                             variant="outlined"
-                            value={this.props.store.details[0] &&
+                            defaultValue={this.props.store.details[0] &&
                                 this.props.store.details[0].notes}
                             onChange={(event) => this.handleChange(event, 'notes')}
                         />
