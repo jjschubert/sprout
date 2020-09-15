@@ -15,6 +15,8 @@ const waterRouter = require('./routes/water.router');
 const fertilizeRouter = require('./routes/fertilize.router')
 const taskRouter = require('./routes/tasks.router')
 const taskObjRouter = require('./routes/taskObj.router')
+const imageRouter = require('./routes/image.router')
+const UploaderS3Router = require('react-dropzone-s3-uploader/s3router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,8 +34,15 @@ app.use('/api/user', userRouter);
 app.use('/api/plants', plantsRouter);
 app.use('/api/water', waterRouter);
 app.use('/api/fertilize', fertilizeRouter);
-app.use('/api/tasks', taskRouter)
-app.use('/api/tasks2', taskObjRouter)
+app.use('/api/tasks', taskRouter);
+app.use('/api/tasks2', taskObjRouter);
+app.use('/api/image', imageRouter)
+app.use('/s3', UploaderS3Router({
+  bucket: 'veggiebucket',                           // required
+  region: 'us-east-1',                            // optional
+  headers: {'Access-Control-Allow-Origin': '*'},  // optional
+  ACL: 'public-read',                                 
+}));
 
 // Serve static files
 app.use(express.static('build'));
