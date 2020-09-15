@@ -15,10 +15,11 @@ class Details extends Component {
     componentDidMount() {
         let id = this.props.match.params.plant_id
         console.log(id)
-        // this.props.dispatch({ type: 'FETCH_PLANTS' });
+        this.props.dispatch({ type: 'GET_TASKS', payload: id })
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
         this.props.dispatch({type: 'GET_TASK_DETAILS', payload: id})
     }
+        
 
     waterPlant = (plant) => {
         console.log('mark watered', plant)

@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './PlantTable.css';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Divider} from '@material-ui/core';
-import EditModule from '../EditModule/EditModule'
-import PlantForm from '../PlantForm/PlantForm';
+import EditModule from '../EditModule/EditModule';
 import moment from 'moment';
 import DeleteAlert from '../DeleteAlert/DeleteAlert.jsx'
 

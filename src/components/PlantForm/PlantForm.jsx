@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button, InputLabel, Paper } from '@material-ui/core';
+import { TextField, Button, Paper } from '@material-ui/core';
 import './PlantForm.css';
 import PlantTable from '../PlantTable/PlantTable.jsx'
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';

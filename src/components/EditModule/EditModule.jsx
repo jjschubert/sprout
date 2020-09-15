@@ -29,7 +29,8 @@ componentDidMount() {
 
     //open edit module
     handleClickOpen = () => {
-        this.setState({ open: true,
+        this.setState({ 
+            open: true,
         plant:{
             lastWater: this.props.store.details[0].last_water,
             lastFertilize: this.props.store.details[0].last_fertilize,
@@ -89,7 +90,7 @@ componentDidMount() {
                             fullWidth
                             variant="outlined"
                             id="lastWatered"
-                            value={this.props.store.details[0]?
+                            value={this.props.store.details[0].last_water ?
                                 moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
                                 : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}
