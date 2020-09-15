@@ -73,7 +73,7 @@ componentDidMount() {
                 <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
                     Edit Plant
         </Button>
-            {this.props.store.details[0] &&
+            {this.props.store.taskDetails[0] &&
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
