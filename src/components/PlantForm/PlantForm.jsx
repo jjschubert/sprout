@@ -7,6 +7,14 @@ import PlantTable from '../PlantTable/PlantTable.jsx'
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 
 
+const dropStyle = {
+    width: '400px',
+    height: '60px',
+    border: '2px dashed #b32274',
+   marginBottom: '10px'
+}
+
+
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -24,8 +32,11 @@ class PlantForm extends Component {
         plantList: ''
     };
 
+    
+
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_TASK_OBJ' });
+        this.props.dispatch({type: 'FETCH_TASKS'})
         this.setState({
             ...this.state,
             plantList: this.props.store.taskObj
@@ -87,6 +98,12 @@ class PlantForm extends Component {
         }
         const s3Url = 'https://veggiebucket.s3.amazonaws.com'
 
+        const innerDropElement = (
+            <div class='inner-drop'>
+                <p>Click or Drop Plant Image Here</p>
+            </div>
+        )
+
         return (
             <div>
                 {this.props.store.taskObj[0] &&
@@ -147,15 +164,20 @@ class PlantForm extends Component {
                                             style={{ width: 400 }}
                                             onChange={(event) => this.handleChange(event, 'notes')}
                                             type='text' />
-                                    </div>
+                                    </div></div>
+                                    <div className='inputContainer'>
                                     <DropzoneS3Uploader
                                         onFinish={this.handleFinishedUpload}
+                                        children={innerDropElement}
                                         s3Url={s3Url}
                                         maxSize={1024 * 1024 * 5}
                                         upload={uploadOptions}
+                                        style={dropStyle}
                                     />
-                                    <Button color='secondary' variant='contained' style={{ height: 35, marginTop: 25, marginLeft: 5 }} type='submit'>Add Plant</Button>
-                                </div>
+                                    {this.state.newPlant.imagePath && 
+                                    <Button color='secondary' variant='contained' style={{ height: 35, marginTop: 25, marginLeft: 5 }} type='submit'>Add Plant</Button>}
+                                    </div>
+                                
                             </form>
                         </div>
                         <PlantTable plantList={this.state.plantList} />
