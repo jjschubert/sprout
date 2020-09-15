@@ -69,17 +69,11 @@ class PlantForm extends Component {
                 notes: '',
             }
         })
-        this.props.dispatch({ type: 'FETCH_TASK_OBJ' })
+        // this.props.dispatch({ type: 'FETCH_TASK_OBJ' })
         console.log('got to fetch task obj')
     }
 
     handleFinishedUpload = info => {
-        // console.log(info)
-        // console.log('File uploaded with filename', info.filename)
-        // console.log('Access it on s3 at', info.fileUrl)
-
-        // this.props.dispatch({type: 'POST_IMAGE_URL', payload: info.fileUrl})
-
         this.setState({
             ...this.state,
             newPlant: {
@@ -99,7 +93,7 @@ class PlantForm extends Component {
         const s3Url = 'https://veggiebucket.s3.amazonaws.com'
 
         const innerDropElement = (
-            <div class='inner-drop'>
+            <div className='inner-drop'>
                 <p>Click or Drop Plant Image Here</p>
             </div>
         )
@@ -116,7 +110,7 @@ class PlantForm extends Component {
                                         <TextField
                                             variant="outlined"
                                             type='text' className='formInputs'
-                                            defaultValue={this.state.newPlant.plantName}
+                                            value={this.state.newPlant.plantName}
                                             onChange={(event) => this.handleChange(event, 'plantName')}
                                             required />
                                     </div>
@@ -124,7 +118,7 @@ class PlantForm extends Component {
                                         <InputLabel>Start Seed Date</InputLabel>
                                         <TextField
                                             variant='outlined'
-                                            defaultValue={this.state.newPlant.seedStart}
+                                            value={this.state.newPlant.seedStart}
                                             className='formInputs'
                                             onChange={(event) => this.handleChange(event, 'seedStart')}
                                             type='date' />
@@ -134,7 +128,7 @@ class PlantForm extends Component {
                                         <TextField
                                             variant='outlined'
                                             className='formInputs'
-                                            defaultValue={this.state.newPlant.hardenOff}
+                                            value={this.state.newPlant.hardenOff}
                                             onChange={(event) => this.handleChange(event, 'hardenOff')}
                                             type='date' />
                                     </div>
@@ -142,7 +136,7 @@ class PlantForm extends Component {
                                         <InputLabel>Plant Outdoors*</InputLabel>
                                         <TextField
                                             variant='outlined' className='formInputs'
-                                            defaultValue={this.state.newPlant.plantOutdoors}
+                                            value={this.state.newPlant.plantOutdoors}
                                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
                                             type='date' />
                                     </div>
@@ -159,7 +153,7 @@ class PlantForm extends Component {
                                     <div>
                                         <InputLabel>Notes</InputLabel>
                                         <TextField
-                                            defaultValue={this.state.newPlant.notes}
+                                            value={this.state.newPlant.notes}
                                             variant='outlined' className='formInputs'
                                             style={{ width: 400 }}
                                             onChange={(event) => this.handleChange(event, 'notes')}
@@ -174,8 +168,11 @@ class PlantForm extends Component {
                                         upload={uploadOptions}
                                         style={dropStyle}
                                     />
+                                    
+                                    <div>
                                     {this.state.newPlant.imagePath && 
                                     <Button color='secondary' variant='contained' style={{ height: 35, marginTop: 25, marginLeft: 5 }} type='submit'>Add Plant</Button>}
+                                    </div>
                                     </div>
                                 
                             </form>

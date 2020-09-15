@@ -6,7 +6,6 @@ function* fetchPlants() {
     try{
     //get request
    let response = yield axios.get('/api/plants');
-//should do try catch - skipping for time
     //send to reducer
     yield put({type: 'SET_PLANTS', payload: response.data})
     } catch (error) {
@@ -48,6 +47,7 @@ function* getDetails(action) {
 function* addPlant(action) {
     try {
         yield axios.post(`/api/plants`, action.payload)
+        yield put({type: 'FETCH_TASK_OBJ'})
     } catch (error){
         console.log('error in addPlant', error)
     }
