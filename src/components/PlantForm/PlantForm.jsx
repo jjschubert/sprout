@@ -62,6 +62,14 @@ class PlantForm extends Component {
         console.log('got to fetch task obj')
     }
 
+    handleFinishedUpload = info => {
+        console.log(info)
+        console.log('File uploaded with filename', info.filename)
+        console.log('Access it on s3 at', info.fileUrl)
+
+        this.props.dispatch({type: 'POST_IMAGE_URL', payload: info.fileUrl})
+      }
+
     render() {
 
         const uploadOptions = {
