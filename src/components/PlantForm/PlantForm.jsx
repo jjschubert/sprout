@@ -63,11 +63,20 @@ class PlantForm extends Component {
     }
 
     handleFinishedUpload = info => {
-        console.log(info)
-        console.log('File uploaded with filename', info.filename)
-        console.log('Access it on s3 at', info.fileUrl)
+        // console.log(info)
+        // console.log('File uploaded with filename', info.filename)
+        // console.log('Access it on s3 at', info.fileUrl)
 
-        this.props.dispatch({type: 'POST_IMAGE_URL', payload: info.fileUrl})
+        // this.props.dispatch({type: 'POST_IMAGE_URL', payload: info.fileUrl})
+
+        this.setState({
+            ...this.state,
+            newPlant: {
+                ...this.state.newPlant,
+                imagePath: info.fileUrl
+            }
+        }
+        )
       }
 
     render() {
@@ -122,14 +131,14 @@ class PlantForm extends Component {
                                     </div>
                                 </div>
                                 <div className='inputContainer'>
-                                    <div>
+                                    {/* <div>
                                         <InputLabel>Image Path*</InputLabel>
                                         <TextField
                                             variant='outlined' className='formInputs'
                                             defaultValue={this.state.newPlant.imagePath}
                                             onChange={(event) => this.handleChange(event, 'imagePath')}
                                             type='text' />
-                                    </div>
+                                    </div> */}
                                     <div>
                                         <InputLabel>Notes</InputLabel>
                                         <TextField
@@ -149,7 +158,7 @@ class PlantForm extends Component {
                                 </div>
                             </form>
                         </div>
-                        {/* <PlantTable plantList={this.state.plantList} /> */}
+                        <PlantTable plantList={this.state.plantList} />
                     </Paper>
                 }
             </div>
