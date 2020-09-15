@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {Button, InputLabel, TextField, Dialog, DialogActions, DialogContent, DialogTitle} from '@material-ui/core/';
+import {Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle} from '@material-ui/core/';
 import moment from 'moment';
 import DeleteAlert from '../DeleteAlert/DeleteAlert'
 
@@ -81,26 +81,28 @@ componentDidMount() {
                 >
                     <DialogTitle id="form-dialog-title">Update Plant</DialogTitle>
                     <DialogContent>
-                    <InputLabel htmlFor='lastWatered'>Last Watered</InputLabel>
                         <TextField
+                            label='Last watered'
+                            InputLabelProps={{ shrink: true }} 
                             margin="dense" 
                             type='date'
                             fullWidth
                             variant="outlined"
                             id="lastWatered"
-                            defaultValue={this.props.store.details[0]?
+                            value={this.props.store.details[0]?
                                 moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
                                 : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}
                         />
-                        <InputLabel htmlFor="lastFertilized">Last Fertilized</InputLabel>
                         <TextField
                             margin="dense"
+                            label = 'Last fertilized'
+                            InputLabelProps={{ shrink: true }} 
                             fullWidth
                             type='date'
                             variant="outlined"
                             id="lastFertilized"
-                            defaultValue={this.props.store.details[0]?
+                            value={this.props.store.details[0]?
                                 moment(this.props.store.details[0].last_fertilize).format('yyyy-MM-DD')
                                 : 'yyyy-MM-dd'}
                             required onChange={(event) => this.handleChange(event, 'lastFertilize')}
@@ -111,10 +113,12 @@ componentDidMount() {
                             if (item.due_date !== null) {
                             return (
                                 <div key={item.type_id}>
-                                <InputLabel>{item.description}*</InputLabel>
+                               
                                 <TextField 
+                                InputLabelProps={{ shrink: true }} 
+                                    label={item.description}
                                     margin="dense"
-                                    defaultValue={moment(item.due_date).format('yyyy-MM-DD')}
+                                    value={moment(item.due_date).format('yyyy-MM-DD')}
                                     fullWidth
                                     type='date'
                                     variant="outlined"
@@ -131,9 +135,9 @@ componentDidMount() {
                             rows={4}
                             fullWidth
                             variant="outlined"
-                            defaultValue={this.props.store.details[0] &&
+                            value={this.props.store.details[0] &&
                                 this.props.store.details[0].notes}
-                            required onChange={(event) => this.handleChange(event, 'notes')}
+                            onChange={(event) => this.handleChange(event, 'notes')}
                         />
                         
                     </DialogContent>

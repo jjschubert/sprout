@@ -106,8 +106,8 @@ class PlantForm extends Component {
                             <form onSubmit={this.addPlant}>
                                 <div className='inputContainer'>
                                     <div>
-                                        <InputLabel>Plant Name*</InputLabel>
-                                        <TextField
+                                        <TextField 
+                                            label='Plant name'
                                             variant="outlined"
                                             type='text' className='formInputs'
                                             value={this.state.newPlant.plantName}
@@ -115,17 +115,19 @@ class PlantForm extends Component {
                                             required />
                                     </div>
                                     <div>
-                                        <InputLabel>Start Seed Date</InputLabel>
                                         <TextField
                                             variant='outlined'
+                                            InputLabelProps={{ shrink: true }} 
+                                            label='Seed start date'
                                             value={this.state.newPlant.seedStart}
                                             className='formInputs'
                                             onChange={(event) => this.handleChange(event, 'seedStart')}
                                             type='date' />
                                     </div>
                                     <div>
-                                        <InputLabel>Harden Off Date</InputLabel>
                                         <TextField
+                                            label='Harden off date'
+                                            InputLabelProps={{ shrink: true }} 
                                             variant='outlined'
                                             className='formInputs'
                                             value={this.state.newPlant.hardenOff}
@@ -133,11 +135,13 @@ class PlantForm extends Component {
                                             type='date' />
                                     </div>
                                     <div>
-                                        <InputLabel>Plant Outdoors*</InputLabel>
                                         <TextField
                                             variant='outlined' className='formInputs'
+                                            label ='Plant outdoors date'
+                                            InputLabelProps={{ shrink: true }} 
                                             value={this.state.newPlant.plantOutdoors}
                                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
+                                            required
                                             type='date' />
                                     </div>
                                 </div>
@@ -151,8 +155,8 @@ class PlantForm extends Component {
                                             type='text' />
                                     </div> */}
                                     <div>
-                                        <InputLabel>Notes</InputLabel>
                                         <TextField
+                                            label='Notes'
                                             value={this.state.newPlant.notes}
                                             variant='outlined' className='formInputs'
                                             style={{ width: 400 }}
