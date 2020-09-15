@@ -55,6 +55,7 @@ const useStyles = makeStyles((customTheme) => ({
     drawer: {
         width: drawerWidth,
         flexShrink: 0,
+        marginTop: 0,
     },
     drawerPaper: {
         width: drawerWidth,
@@ -123,8 +124,7 @@ function NavDrawer(props) {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
-                position="static"
-                style={{ margin: 0 }}
+                position="relative"
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
                 })}
@@ -177,6 +177,7 @@ function NavDrawer(props) {
                     variant="persistent"
                     anchor="right"
                     open={open}
+                    style={{margin: 0, padding: 0}}
                     classes={{
                         paper: classes.drawerPaper,
                     }}

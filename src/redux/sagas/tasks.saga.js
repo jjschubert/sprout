@@ -29,26 +29,26 @@ function* fetchTaskDetails(action) {
 }
 
 //gets all tasks, sends to reducer where filtered by date before return
-function* fetchCurrentTasks() {
-    try {
-        let response = yield axios.get('/api/tasks');
-        yield put({type: 'SET_CURRENT_TASKS', payload: response.data})
-        console.log('got to set current')
-    } catch (error) {
-        console.log('error in currentTasks', error)
-    }
-}
+// function* fetchCurrentTasks() {
+//     try {
+//         let response = yield axios.get('/api/tasks');
+//         yield put({type: 'SET_CURRENT_TASKS', payload: response.data})
+//         console.log('got to set current')
+//     } catch (error) {
+//         console.log('error in currentTasks', error)
+//     }
+// }
 
-//gets all tasks, sends to reducer where filtered by date before return
-function* fetchOverdueTasks() {
-    try {
-        let response = yield axios.get('/api/tasks');
-        yield put({type: 'SET_OVERDUE_TASKS', payload: response.data})
-        console.log('got to set overdue')
-    } catch (error) {
-        console.log('error in overdueTasks', error)
-    }
-}
+// //gets all tasks, sends to reducer where filtered by date before return
+// function* fetchOverdueTasks() {
+//     try {
+//         let response = yield axios.get('/api/tasks');
+//         yield put({type: 'SET_OVERDUE_TASKS', payload: response.data})
+//         console.log('got to set overdue')
+//     } catch (error) {
+//         console.log('error in overdueTasks', error)
+//     }
+// }
 
 function* sendTaskComplete(action) {
     try {
@@ -60,14 +60,14 @@ function* sendTaskComplete(action) {
 }
 
 //gets all tasks, sends to reducer where filtered by date before return
-function* fetchUpcomingTasks() {
-    try {
-        let response = yield axios.get('/api/tasks');
-        yield put({type: 'SET_UPCOMING_TASKS', payload: response.data})
-    } catch (error) {
-        console.log('error in upcomingTasks', error)
-    }
-}
+// function* fetchUpcomingTasks() {
+//     try {
+//         let response = yield axios.get('/api/tasks');
+//         yield put({type: 'SET_UPCOMING_TASKS', payload: response.data})
+//     } catch (error) {
+//         console.log('error in upcomingTasks', error)
+//     }
+// }
 
 function* sendUpdatedTask(action) {
     try {
@@ -92,10 +92,10 @@ function* taskObj() {
 function* tasksSaga() {
     yield takeLatest('FETCH_TASKS', fetchTasks)
     yield takeLatest('GET_TASK_DETAILS', fetchTaskDetails)
-    yield takeLatest('GET_CURRENT_TASKS', fetchCurrentTasks)
-    yield takeLatest('GET_OVERDUE_TASKS', fetchOverdueTasks)
+    // yield takeLatest('GET_CURRENT_TASKS', fetchCurrentTasks)
+    // yield takeLatest('GET_OVERDUE_TASKS', fetchOverdueTasks)
     yield takeLatest('TASK_COMPLETE', sendTaskComplete)
-    yield takeLatest('GET_UPCOMING_TASKS', fetchUpcomingTasks)
+    // yield takeLatest('GET_UPCOMING_TASKS', fetchUpcomingTasks)
     yield takeLatest('UPDATE_TASK', sendUpdatedTask)
     yield takeLatest('FETCH_TASK_OBJ', taskObj)
 }
