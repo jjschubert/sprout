@@ -13,7 +13,6 @@ const overdueReducer = (state = [], action) => {
         // return moment(obj.due_date) < todaysDate && obj.task_status === false;
         return moment(obj.due_date).isBefore(todaysDate, 'day') && obj.task_status === false
       });
-      console.log(overdueTasks);
       return overdueTasks;
 
     // case 'SET_OVERDUE_TASKS':

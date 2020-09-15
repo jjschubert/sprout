@@ -13,20 +13,14 @@ class NotificationIcon extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'GET_TASKS' })
-    this.getBadgeCount();
   }
 
-  getBadgeCount = () => {
-    this.props.dispatch({ type: 'GET_CURRENT_TASKS' })
-    this.props.dispatch({ type: 'GET_OVERDUE_TASKS' })
-  }
 
 
   render() {
 
     let badgeCount = this.props.store.current.length + this.props.store.overdue.length
-    console.log(badgeCount)
-
+  
     return (
       <>
         {this.props.store.user.id &&

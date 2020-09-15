@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Button, InputLabel, Paper } from '@material-ui/core';
 import './PlantForm.css';
+import PlantTable from '../PlantTable/PlantTable.jsx'
 
 
 // Basic class component structure for React with default state
@@ -11,40 +12,56 @@ import './PlantForm.css';
 // component.
 class PlantForm extends Component {
     state = {
-        update: false,
-        plantName: '',
+       newPlant: {
+           plantName: '',
         seedStart: '',
         hardenOff: '',
         plantOutdoors: '',
         imagePath: '',
         notes: ''
+    },
+        plantList: ''
     };
+
+    componentDidMount() {
+      this.props.dispatch({type: 'FETCH_TASK_OBJ'});
+      this.setState({
+          ...this.state, 
+          plantList: this.props.store.taskObj
+      })
+    }
 
         //tracks form changes
         handleChange = (event, propertyName) => {
             this.setState({
                 ...this.state,
-                    [propertyName]: event.target.value})
+                newPlant: {
+                    ...this.state.newPlant,
+                    [propertyName]: event.target.value}}
+            )
         }
 
         addPlant = (event) => {
             event.preventDefault();
-            console.log(this.state.newPlant)
-            this.props.dispatch({type: 'ADD_PLANT', payload: this.state})
+            this.props.dispatch({type: 'ADD_PLANT', payload: this.state.newPlant})
             this.setState({
                 ...this.state,
+                newPlant: {
                     plantName: '',
                     seedStart: '',
                     hardenOff: '',
                     plantOutdoors: '',
                     imagePath: '',
-                    notes: '',
+                    notes: '',}
             })
             this.props.dispatch({type: 'FETCH_TASK_OBJ'})
+            console.log('got to fetch task obj')
         }
 
     render() {
         return (
+            <div>
+                {this.props.store.taskObj[0] && 
             <Paper style={{paddingBottom: 25}}>
             <div className='formDiv' >
                 <form onSubmit={this.addPlant}>
@@ -54,7 +71,7 @@ class PlantForm extends Component {
                         <TextField
                             variant="outlined"
                             type='text' className='formInputs'
-                            defaultValue={this.state.plantName}
+                            defaultValue={this.state.newPlant.plantName}
                             onChange={(event) => this.handleChange(event, 'plantName')}
                             required />
                     </div>
@@ -62,7 +79,7 @@ class PlantForm extends Component {
                         <InputLabel>Start Seed Date</InputLabel>
                         <TextField
                             variant='outlined'
-                            defaultValue={this.state.seedStart}
+                            defaultValue={this.state.newPlant.seedStart}
                             className='formInputs'
                             onChange={(event) => this.handleChange(event, 'seedStart')}
                             type='date' />
@@ -72,7 +89,7 @@ class PlantForm extends Component {
                         <TextField
                             variant='outlined'
                             className='formInputs'
-                            defaultValue={this.state.hardenOff}
+                            defaultValue={this.state.newPlant.hardenOff}
                             onChange={(event) => this.handleChange(event, 'hardenOff')}
                             type='date' />
                     </div>
@@ -80,7 +97,7 @@ class PlantForm extends Component {
                         <InputLabel>Plant Outdoors*</InputLabel>
                         <TextField
                             variant='outlined' className='formInputs'
-                            defaultValue={this.state.plantOutdoors}
+                            defaultValue={this.state.newPlant.plantOutdoors}
                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
                             type='date' />
                     </div>
@@ -90,14 +107,14 @@ class PlantForm extends Component {
                         <InputLabel>Image Path*</InputLabel>
                         <TextField
                             variant='outlined' className='formInputs'
-                            defaultValue={this.state.imagePath}
+                            defaultValue={this.state.newPlant.imagePath}
                             onChange={(event) => this.handleChange(event, 'imagePath')}
                             type='text' />
                     </div>
                     <div>
                         <InputLabel>Notes</InputLabel>
                         <TextField
-                            defaultValue={this.state.notes}
+                            defaultValue={this.state.newPlant.notes}
                             variant='outlined' className='formInputs'
                             style={{ width: 400 }}
                             onChange={(event) => this.handleChange(event, 'notes')}
@@ -107,7 +124,10 @@ class PlantForm extends Component {
                 </div>
                 </form>
             </div>
+            <PlantTable plantList={this.state.plantList}/>
             </Paper>
+             }
+            </div>
         );
     }
 }

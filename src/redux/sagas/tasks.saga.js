@@ -8,7 +8,11 @@ function* fetchTasks() {
     //get request
    let response = yield axios.get('/api/tasks');
     yield put({type: 'SET_TASKS', payload: response.data})
-   
+    yield put({type: 'SET_CURRENT_TASKS', payload: response.data})
+        console.log('got to set current')
+    yield put({type: 'SET_OVERDUE_TASKS', payload: response.data})
+        console.log('got to set overdue')
+    yield put({type: 'SET_UPCOMING_TASKS', payload: response.data})
     } catch (error) {
         console.log('err in fetchTasks', error)
     }

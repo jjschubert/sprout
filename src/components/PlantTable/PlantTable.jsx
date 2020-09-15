@@ -11,7 +11,7 @@ import DeleteAlert from '../DeleteAlert/DeleteAlert.jsx'
 
 class AddPlant extends Component {
   state = {
-    heading: 'AddPlant Component',
+    plantList: ''
   };
  
   getByValue = (arr, value) => {
@@ -27,15 +27,14 @@ class AddPlant extends Component {
   }
 
   componentDidMount() {
-      this.props.dispatch({type: 'FETCH_TASKS'})
-      this.props.dispatch({type: 'FETCH_TASK_OBJ'})
+    console.log(this.props)
   }
 
   render() {
     return (
       <div className='bkg'>
         <Divider />
-        <PlantForm />
+        {/* <PlantForm /> */}
         <Paper style={{padding:20}}>
       <Table>
         <TableHead>
@@ -53,7 +52,7 @@ class AddPlant extends Component {
           {this.props.store.taskObj.map((plant) => 
           <TableRow key={plant.plant_id}>
             <TableCell>{plant.plantTasks[0].plantname}</TableCell>
-           <TableCell align="">{this.getByValue(plant.plantTasks, 1)}</TableCell>
+           <TableCell align="left">{this.getByValue(plant.plantTasks, 1)}</TableCell>
            <TableCell align="left">{this.getByValue(plant.plantTasks, 2)}</TableCell>
            <TableCell align="left">{this.getByValue(plant.plantTasks, 3)}</TableCell>
           <TableCell align="left">

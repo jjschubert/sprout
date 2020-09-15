@@ -10,7 +10,6 @@ const upcomingReducer = (state = [], action) => {
       upcomingTasks = action.payload.filter((obj) => {
         return moment(obj.due_date).isAfter(todaysDate, 'day') && obj.task_status === false && moment(obj.due_date).isBefore(dateBefore, 'day')
       });
-      console.log(upcomingTasks);
       return upcomingTasks;
 
     case 'UNSET_TASKS':
