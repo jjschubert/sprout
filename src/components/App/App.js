@@ -22,7 +22,7 @@ import Tasks from '../Tasks/Tasks.jsx'
 import PlantForm from '../PlantForm/PlantForm.jsx'
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import TempNav from '../Nav/TempNav';
+import TempNav from '../Nav/Nav';
 
 
 const customTheme = createMuiTheme({
