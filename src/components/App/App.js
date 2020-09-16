@@ -22,9 +22,6 @@ import Tasks from '../Tasks/Tasks.jsx'
 import PlantForm from '../PlantForm/PlantForm.jsx'
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Drawer from '../Nav/Drawer.js'
-import TempDrawer from '../Nav/TempDrawer.js'
-import Nav from '../Nav/Nav.js'
 import TempNav from '../Nav/TempNav';
 
 

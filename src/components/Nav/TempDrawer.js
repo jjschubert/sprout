@@ -81,8 +81,8 @@ function TempDrawer(props) {
     );
 
     return (
-        <div className='nav-link'>
-          <Button className="nav-link"  onClick={toggleDrawer('right', true)}><MenuIcon style={{color: 'white'}}  /></Button>
+        <div className='nav-hamburger'>
+          <Button onClick={toggleDrawer('right', true)}><MenuIcon style={{color: 'white'}} /></Button>
           <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
             {list('right')}
           </Drawer>
