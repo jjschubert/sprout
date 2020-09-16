@@ -43,17 +43,18 @@ function TempNav(props) {
                 <Toolbar>
                 <Box display='flex' flexGrow={1}>
                     <Link to="/home">
-                        <h2 className="nav-title">Sprout</h2>
+                        <h1 className="nav-title">Sprout</h1>
                     </Link>
                     </Box>
                     <div className="nav-right">
-                    <NotificationIcon />
+                    
                     <Link className="nav-link" to={loginLinkData.path}>
                         {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
           and call this link 'Login / Register' if they are not */}
                         {loginLinkData.text}
                     </Link>
+                    <NotificationIcon />
                     {props.store.user.id ? <></> :
                         <Link className="nav-link" to={aboutData.path}>
                             {aboutData.text}

@@ -48,5 +48,6 @@
     float: right;
 }
  .title {
-     font-family: sans-serif;
+     font-family: 'Raleway', sans-serif;
+    color: #b32274;
  }

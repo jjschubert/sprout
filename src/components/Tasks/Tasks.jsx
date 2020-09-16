@@ -56,7 +56,7 @@ class Tasks extends Component {
   
           )
         })
-        : <Typography variant='h6' style={{color: '#b32274'}}>Congrats! You're all caught up</Typography>}
+        : <Typography variant='h6' style={{color: '#b32274'}}>All done with today's tasks!</Typography>}
       
       </div>
      

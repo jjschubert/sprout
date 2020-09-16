@@ -35,7 +35,7 @@ class AddPlant extends Component {
         <Divider />
         {/* <PlantForm /> */}
         <Paper style={{padding:20}}>
-      <Table>
+      <Table >
         <TableHead>
           <TableRow>
             <TableCell style={{fontWeight: 'bold', fontSize: 16}}>Plant Name</TableCell>

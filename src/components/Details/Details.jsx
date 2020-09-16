@@ -15,7 +15,7 @@ class Details extends Component {
     componentDidMount() {
         let id = this.props.match.params.plant_id
         console.log(id)
-        this.props.dispatch({ type: 'GET_TASKS', payload: id })
+        this.props.dispatch({ type: 'FETCH_TASKS' })
         this.props.dispatch({ type: 'GET_DETAILS', payload: id })
         this.props.dispatch({type: 'GET_TASK_DETAILS', payload: id})
     }
@@ -46,7 +46,7 @@ class Details extends Component {
                 {this.props.store.details[0] &&
 
                     <Card className='details'>
-                        <Typography variant='h4' className='title'>Plant Detail: {this.props.store.details[0].name}</Typography>
+                        <Typography variant='h5' className='title'>Plant Detail: {this.props.store.details[0].name}</Typography>
 
 
                         <div className='body'>

@@ -11,7 +11,7 @@ import WaterSnackbar from '../WaterSnackbar/WaterSnackbar';
 
 class Dashboard extends Component {
     state = {
-        heading: 'Dashboard',
+        heading: 'Your Garden',
     };
 
     componentDidMount() {
@@ -22,7 +22,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div className='dashboard'>
-                <h2 className='title'>{this.state.heading}</h2>
+                <h2 className='title' >{this.state.heading}</h2>
                 <div className='container' id='dashboard'>
                     {this.props.store.plants.map((plant) => (
                         <Card key={plant.id} className='item'>
