@@ -101,7 +101,7 @@ class PlantForm extends Component {
         return (
             <div>
                 {this.props.store.taskObj[0] &&
-                    <Paper style={{ paddingBottom: 25 }}>
+                    <Paper >
                         <div className='formDiv' >
                             <form onSubmit={this.addPlant}>
                                 <div className='inputContainer'>

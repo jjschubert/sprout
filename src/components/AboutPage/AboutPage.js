@@ -2,14 +2,10 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import './AboutPage.css';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
-  
-  <div className="container">
+  <div className='abtImage'>
+  <div className="abtContainer">
     <div className='textBox'>
       <Typography variant='h5' color='secondary'>
         Sprout is a task management application that helps gardeners grow bountiful vegetable plants from seed.
@@ -21,6 +17,7 @@ const AboutPage = () => (
         Plan and track important milestones for each plant and easily view overdue and upcoming tasks.
             </Typography>
     </div>
+  </div>
   </div>
 );
 

@@ -6,7 +6,15 @@
     padding: 1em 5em;
 }
 
-.forImage {
+.abtImage {
     background-image: url('/images/bluesprout.jpg');
-    background-size: cover
+    background-size: cover;
+    padding-top: 200px;
+    height: 600px;
   }
+
+.abtContainer {
+     background: rgba(215, 217, 215, 0.8);
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
