@@ -19,10 +19,7 @@ export default function AlertDialog(props) {
         method: 'DELETE',
         url: `/api/plants/${props.id}`
     }).then((response) => {
-        //add refresh here
         setOpen(false);
-        // props.getFeedback();
-        // this.props.history.push('/dashboard')
         history.push({
         pathname:  "/Dashboard"})
        

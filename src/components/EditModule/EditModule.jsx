@@ -90,7 +90,7 @@ componentDidMount() {
                             fullWidth
                             variant="outlined"
                             id="lastWatered"
-                            defaultValue={this.props.store.details[0].last_water ?
+                            defaultValue={this.props.store.details[0] ?
                                 moment(this.props.store.details[0].last_water).format('yyyy-MM-DD')
                                 : "yyyy-MM-dd"}
                             required onChange={(event) => this.handleChange(event, 'lastWater')}

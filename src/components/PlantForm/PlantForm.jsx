@@ -9,7 +9,7 @@ import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 
 const dropStyle = {
     width: '400px',
-    height: '60px',
+    height: '50px',
     border: '2px dashed #b32274',
    marginBottom: '10px'
 }
@@ -154,7 +154,7 @@ class PlantForm extends Component {
                                             onChange={(event) => this.handleChange(event, 'imagePath')}
                                             type='text' />
                                     </div> */}
-                                    <div>
+                                    <div className='inputContainer'>
                                         <TextField
                                             label='Notes'
                                             value={this.state.newPlant.notes}
@@ -162,9 +162,7 @@ class PlantForm extends Component {
                                             style={{ width: 400 }}
                                             onChange={(event) => this.handleChange(event, 'notes')}
                                             type='text' />
-                                    </div></div>
-                                    <div className='inputContainer'>
-                                    <DropzoneS3Uploader
+                                            <DropzoneS3Uploader
                                         onFinish={this.handleFinishedUpload}
                                         children={innerDropElement}
                                         s3Url={s3Url}
@@ -172,11 +170,11 @@ class PlantForm extends Component {
                                         upload={uploadOptions}
                                         style={dropStyle}
                                     />
-                                    
-                                    <div>
-                                    {this.state.newPlant.imagePath && 
-                                    <Button color='secondary' variant='contained' style={{ height: 35, marginTop: 25, marginLeft: 5 }} type='submit'>Add Plant</Button>}
-                                    </div>
+                                    </div></div>
+                                    <div className='inputContainer'>
+                                    {this.state.newPlant.imagePath ?
+                                    <Button color='secondary' variant='contained' style={{ height: 35, margin: 5}} type='submit'>Add Plant</Button>
+                                : <Button color='secondary' variant='contained' disabled style={{ height: 35, margin: 5}} type='submit'>Add Plant</Button>}
                                     </div>
                                 
                             </form>
