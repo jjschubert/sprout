@@ -5,7 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import NotificationIcon from '../NotificationIcon/NotificationIcon';
-
+import TempDrawer from './TempDrawer';
 
 
 
@@ -57,6 +57,7 @@ const Nav = (props) => {
           About
         </Link>
         {/* <Drawer /> */}
+        <TempDrawer />
       </div>
     </div>
   );
