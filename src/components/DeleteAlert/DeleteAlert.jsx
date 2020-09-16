@@ -7,10 +7,12 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
 import { useHistory } from "react-router";
+import { useDispatch } from 'react-redux';
 
 export default function AlertDialog(props) {
   const [open, setOpen] = React.useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
   //sends delete request to server
   const deletePlant = () => {
       console.log(props);
@@ -20,9 +22,13 @@ export default function AlertDialog(props) {
         url: `/api/plants/${props.id}`
     }).then((response) => {
         setOpen(false);
+       if (props.type === 'fromEdit') {
         history.push({
-        pathname:  "/Dashboard"})
-       
+        pathname:  "/Dashboard"})}
+        else {
+          dispatch({type: 'FETCH_TASK_OBJ'})
+        }
+       //need to dispatch to taskObj from here
     }).catch(error => {
         console.log('error in DELETE', error);
     })

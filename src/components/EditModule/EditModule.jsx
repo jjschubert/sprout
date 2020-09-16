@@ -143,7 +143,7 @@ componentDidMount() {
                         
                     </DialogContent>
                     <DialogActions>
-                    <DeleteAlert id={this.props.store.details[0].id}  history={this.props.history}/>
+                    <DeleteAlert id={this.props.store.details[0].id}  history={this.props.history} type={'fromEdit'}/>
                         <Button onClick={this.handleClose} color="primary">
                             Cancel
             </Button>
