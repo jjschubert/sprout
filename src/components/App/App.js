@@ -23,6 +23,7 @@ import PlantForm from '../PlantForm/PlantForm.jsx'
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import TempNav from '../Nav/Nav';
+import Calendar from '../Calendar/Calendar'
 
 
 const customTheme = createMuiTheme({
@@ -99,6 +100,13 @@ class App extends Component {
               exact
               path="/dashboard"
               component={Dashboard}
+            />
+
+          <ProtectedRoute
+              // logged in shows Dashboard else shows LoginPage
+              exact
+              path="/calendar"
+              component={Calendar}
             />
 
             <ProtectedRoute

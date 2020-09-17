@@ -36,14 +36,14 @@ class Tasks extends Component {
     return (
       <div className='taskBkg'>
       
-      <Typography variant='h4'>Today's Tasks</Typography>
+      <Typography variant='h5'>Today's Tasks</Typography>
       <div className='taskContainer'>
         {this.props.store.current[0]? 
         this.props.store.current.map((task) => {
           return (
             <Card key={task.id} className='taskCard current' style={{background: '#e8f6d5'}}>
               <div className='cardContent'>
-              <Typography variant='h6'>Task: {task.description}</Typography>
+              <Typography variant='h5'>Task: {task.description}</Typography>
           <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
           </div>
           <Divider />
@@ -56,7 +56,7 @@ class Tasks extends Component {
   
           )
         })
-        : <Typography variant='h6' style={{color: '#b32274'}}>All done with today's tasks!</Typography>}
+        : <Typography variant='h5' style={{color: '#b32274'}}>All done with today's tasks!</Typography>}
       
       </div>
      
@@ -68,7 +68,7 @@ class Tasks extends Component {
           return (
             <Card key={task.id} className='taskCard' style={{background: '#f7d4e8'}}>
               <div className='cardContent'>
-              <Typography variant='h6'>Task: {task.description}</Typography>
+              <Typography variant='h5'>Task: {task.description}</Typography>
           <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
           </div>
           <Divider />
@@ -81,7 +81,7 @@ class Tasks extends Component {
   
           )
         })
-      : <Typography variant='h6' style={{color: '#b32274'}}>Wow, you're on top of things!</Typography>}
+      : <Typography variant='h5' style={{color: '#b32274'}}>Wow, you're on top of things!</Typography>}
       
       </div>
     
@@ -91,7 +91,7 @@ class Tasks extends Component {
         return (
           <Card key={task.id} className='taskCard' style={{background: '#C7E0ED'}}>
             <div className='cardContent'>
-            <Typography variant='h6'>Task: {task.description}</Typography>
+            <Typography variant='h5'>Task: {task.description}</Typography>
         <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
         </div>
         <Divider />
