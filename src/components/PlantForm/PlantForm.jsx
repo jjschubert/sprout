@@ -158,15 +158,6 @@ class PlantForm extends Component {
                                             type='date' />
                                     </div>
                                 </div>
-                                <div className='inputContainer'>
-                                    {/* <div>
-                                        <InputLabel>Image Path*</InputLabel>
-                                        <TextField
-                                            variant='outlined' className='formInputs'
-                                            defaultValue={this.state.newPlant.imagePath}
-                                            onChange={(event) => this.handleChange(event, 'imagePath')}
-                                            type='text' />
-                                    </div> */}
                                     <div className='inputContainer'>
                                         <TextField
                                             label='Notes'
@@ -184,7 +175,7 @@ class PlantForm extends Component {
                                             onFinish={this.handleFinishedUpload}
                                             onProgress={this.toggleProgress}
                                         />
-                                    </div></div>
+                                    </div>
                                 <div className='inputContainer'>
                                     {this.state.newPlant.imagePath ?
                                         <Button color='secondary' variant='contained' style={{ height: 35, margin: 5 }} type='submit'>Add Plant</Button>

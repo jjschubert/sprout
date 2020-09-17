@@ -89,7 +89,7 @@ class Tasks extends Component {
       <div className='taskContainer'>
       {this.props.store.upcoming.map((task) => {
         return (
-          <Card key={task.id} className='taskCard' style={{background: '#deeded'}}>
+          <Card key={task.id} className='taskCard' style={{background: '#C7E0ED'}}>
             <div className='cardContent'>
             <Typography variant='h6'>Task: {task.description}</Typography>
         <Typography variant='body1'>Due: {moment(task.due_date).format('MMMM Do')}</Typography>
