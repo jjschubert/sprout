@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, Button, Paper } from '@material-ui/core';
+import { TextField, Button, Paper, CircularProgress } from '@material-ui/core';
 import './PlantForm.css';
 import PlantTable from '../PlantTable/PlantTable.jsx'
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+
 
 
 const dropStyle = {
     width: '400px',
     height: '50px',
     border: '2px dashed #b32274',
-   marginBottom: '10px'
+    marginBottom: '10px'
 }
 
 
@@ -29,14 +30,15 @@ class PlantForm extends Component {
             imagePath: '',
             notes: ''
         },
-        plantList: ''
+        plantList: '',
+        progress: false,
     };
 
-    
+
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_TASK_OBJ' });
-        this.props.dispatch({type: 'FETCH_TASKS'})
+        this.props.dispatch({ type: 'FETCH_TASKS' })
         this.setState({
             ...this.state,
             plantList: this.props.store.taskObj
@@ -69,20 +71,29 @@ class PlantForm extends Component {
                 notes: '',
             }
         })
-        // this.props.dispatch({ type: 'FETCH_TASK_OBJ' })
-        console.log('got to fetch task obj')
     }
 
     handleFinishedUpload = info => {
+        console.log('handleFinishedUpload called')
         this.setState({
             ...this.state,
+            progress: false,
             newPlant: {
                 ...this.state.newPlant,
                 imagePath: info.fileUrl
             }
+        })
+        console.log(this.state)
+    }
+
+    toggleProgress = () => {
+        this.setState({
+            ...this.state,
+            progress: true,
+        })
+        console.log(this.state)
         }
-        )
-      }
+    
 
     render() {
 
@@ -98,6 +109,8 @@ class PlantForm extends Component {
             </div>
         )
 
+   
+
         return (
             <div>
                 {this.props.store.taskObj[0] &&
@@ -106,7 +119,7 @@ class PlantForm extends Component {
                             <form onSubmit={this.addPlant}>
                                 <div className='inputContainer'>
                                     <div>
-                                        <TextField 
+                                        <TextField
                                             label='Plant name'
                                             variant="outlined"
                                             type='text' className='formInputs'
@@ -117,7 +130,7 @@ class PlantForm extends Component {
                                     <div>
                                         <TextField
                                             variant='outlined'
-                                            InputLabelProps={{ shrink: true }} 
+                                            InputLabelProps={{ shrink: true }}
                                             label='Seed start date'
                                             value={this.state.newPlant.seedStart}
                                             className='formInputs'
@@ -127,7 +140,7 @@ class PlantForm extends Component {
                                     <div>
                                         <TextField
                                             label='Harden off date'
-                                            InputLabelProps={{ shrink: true }} 
+                                            InputLabelProps={{ shrink: true }}
                                             variant='outlined'
                                             className='formInputs'
                                             value={this.state.newPlant.hardenOff}
@@ -137,8 +150,8 @@ class PlantForm extends Component {
                                     <div>
                                         <TextField
                                             variant='outlined' className='formInputs'
-                                            label ='Plant outdoors date'
-                                            InputLabelProps={{ shrink: true }} 
+                                            label='Plant outdoors date'
+                                            InputLabelProps={{ shrink: true }}
                                             value={this.state.newPlant.plantOutdoors}
                                             onChange={(event) => this.handleChange(event, 'plantOutdoors')}
                                             required
@@ -162,21 +175,23 @@ class PlantForm extends Component {
                                             style={{ width: 400 }}
                                             onChange={(event) => this.handleChange(event, 'notes')}
                                             type='text' />
-                                            <DropzoneS3Uploader
-                                        onFinish={this.handleFinishedUpload}
-                                        children={innerDropElement}
-                                        s3Url={s3Url}
-                                        maxSize={1024 * 1024 * 5}
-                                        upload={uploadOptions}
-                                        style={dropStyle}
-                                    />
+                                        <DropzoneS3Uploader
+                                            children={innerDropElement}
+                                            s3Url={s3Url}
+                                            maxSize={1024 * 1024 * 5}
+                                            upload={uploadOptions}
+                                            style={dropStyle}
+                                            onFinish={this.handleFinishedUpload}
+                                            onProgress={this.toggleProgress}
+                                        />
                                     </div></div>
-                                    <div className='inputContainer'>
+                                <div className='inputContainer'>
                                     {this.state.newPlant.imagePath ?
-                                    <Button color='secondary' variant='contained' style={{ height: 35, margin: 5}} type='submit'>Add Plant</Button>
-                                : <Button color='secondary' variant='contained' disabled style={{ height: 35, margin: 5}} type='submit'>Add Plant</Button>}
-                                    </div>
-                                
+                                        <Button color='secondary' variant='contained' style={{ height: 35, margin: 5 }} type='submit'>Add Plant</Button>
+                                        : <Button color='secondary' variant='contained' disabled style={{ height: 35, margin: 5 }} type='submit'>Add Plant</Button>}
+                                    {this.state.progress && <CircularProgress /> }
+                                </div>
+
                             </form>
                         </div>
                         <PlantTable plantList={this.state.plantList} />

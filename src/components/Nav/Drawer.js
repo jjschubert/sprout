@@ -58,18 +58,14 @@ function TempDrawer(props) {
                 }
                 {props.store.user.id &&
                     <ListItem><ListItemText>
-                        <Link className='drawer-link' to='/dashboard'>Your Garden</Link></ListItemText></ListItem>
+                        <Link className='drawer-link' to='/dashboard'>View Garden</Link></ListItemText></ListItem>
                 }
                 {props.store.user.id &&
                     <ListItem><ListItemText>
-                        <Link className='drawer-link' to='/add'>Add Plants</Link></ListItemText>
+                        <Link className='drawer-link' to='/add'>Manage Garden</Link></ListItemText>
                     </ListItem>
                 }
-                {props.store.user.id &&
-                    <ListItem><ListItemText>
-                        <Link className='drawer-link' to='/add'>Plant Table</Link></ListItemText>
-                    </ListItem>
-                }
+               
 
             </List>
             <Divider />
