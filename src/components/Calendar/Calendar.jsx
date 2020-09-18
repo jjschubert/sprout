@@ -6,9 +6,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 //          import  { FullCalendar, formatDate, timeGridPlugin, interactionPlugin } from '@fullcalendar/react'
 // import { INITIAL_EVENTS, createEventId } from './event-utils.js'
-
-import axios from 'axios'
 import { formatDate } from '@fullcalendar/core'
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
 class Calendar extends Component {
@@ -16,17 +16,14 @@ class Calendar extends Component {
     state = {
         weekendsVisible: true,
         currentEvents: [],
-        routeTest: ''
+        taskList: ''
     }
 
     componentDidMount() {
-        axios.get('/date')
-        .then(res => {
-            console.log(res.data)
-            this.setState({
-                ...this.state,
-                routeTest: res.data
-            })
+        this.props.dispatch({ type: 'FETCH_TASKS' })
+        this.setState({
+            ...this.state, 
+            taskList: this.props.store.tasks
         })
     }
 
@@ -154,4 +151,4 @@ class Calendar extends Component {
 }
 
 
-export default Calendar;
+export default connect(mapStoreToProps)(Calendar);
