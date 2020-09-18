@@ -5,7 +5,7 @@ const currentTasksReducer = (state = [], action) => {
   switch (action.type) {
 
     case 'SET_CURRENT_TASKS':
-      let todaysDate = moment();
+      let todaysDate = moment('05/15/2020');
       console.log(todaysDate, 'today')
       let todaysTasks;
       todaysTasks = action.payload.filter((obj) => {

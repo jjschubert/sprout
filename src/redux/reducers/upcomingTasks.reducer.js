@@ -4,8 +4,8 @@ const upcomingReducer = (state = [], action) => {
   switch (action.type) {
 
     case 'SET_UPCOMING_TASKS':
-      let todaysDate = moment()
-      let dateBefore = moment().add(4, 'd').startOf('day');
+      let todaysDate = moment('05/15/2020')
+      let dateBefore = moment('05/15/2020').add(8, 'd').startOf('day');
       let upcomingTasks;
       upcomingTasks = action.payload.filter((obj) => {
         return moment(obj.due_date).isAfter(todaysDate, 'day') && obj.task_status === false && moment(obj.due_date).isBefore(dateBefore, 'day')

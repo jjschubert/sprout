@@ -8,6 +8,7 @@
 
 .formDiv {
     padding-top: 2em;
+    text-align: center;
 }
 
 .inner-drop {
@@ -15,4 +16,10 @@
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
 
+}
+
+.formTitle {
+    font-family: 'Raleway', sans-serif;
+   color: #b32274;
+   margin-top: 0;
 }

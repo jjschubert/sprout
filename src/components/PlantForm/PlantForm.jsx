@@ -93,6 +93,17 @@ class PlantForm extends Component {
         })
         console.log(this.state)
         }
+
+    demoPlant = () => {
+        this.setState({
+            ...this.state,
+            newPlant: {
+                ...this.state.newPlant,
+                plantName: 'Poblano Peppers',
+                plantOutdoors: '2020-05-12',
+            }
+        })
+    }
     
 
     render() {
@@ -115,9 +126,12 @@ class PlantForm extends Component {
             <div>
                 {this.props.store.taskObj[0] &&
                     <Paper >
+                        <button onClick={this.demoPlant} style={{color: 'white', height: 40, width: 100, backgroundColor: 'white', outline: 0, border: 'none', margin: 0}}>Test</button>
                         <div className='formDiv' >
+                        <h2 className='formTitle' >Manage Garden</h2>
                             <form onSubmit={this.addPlant}>
                                 <div className='inputContainer'>
+                                    
                                     <div>
                                         <TextField
                                             label='Plant name'

@@ -6,7 +6,7 @@ const overdueReducer = (state = [], action) => {
 
     case 'SET_OVERDUE_TASKS':
       
-      let todaysDate = moment()
+      let todaysDate = moment('05/15/2020')
       let overdueTasks = [];
       
       overdueTasks = action.payload.filter((obj) => {
