@@ -25,7 +25,7 @@ class Dashboard extends Component {
                 <h2 className='title' >{this.state.heading}</h2>
                 <div className='container' id='dashboard'>
                     {this.props.store.plants.map((plant) => (
-                        <Card key={plant.id} className='item'>
+                        <Card key={plant.id} className='item' style={{minHeight: 350}}>
                             <div className='card-content'>
                                 <img className='plant_image' src={plant.image_path} alt={plant.name} />
                                 <div className='title-div'>
