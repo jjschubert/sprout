@@ -33,9 +33,10 @@ Copy and paste database.sql file to set up the entire basic database structure.
 
 ## Screenshots
 
+![Garden](public/images/garden_wide.png)
 ![Plant Details](public/images/Details.png)
 ![Tasks](public/images/Tasks.png)
-![Garden](public/images/garden_wide.png)
+
 
 ## Completed Features
 
