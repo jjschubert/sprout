@@ -21,10 +21,9 @@ Sprout makes it easy to manage different timelines for each plant as you guide i
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-[Node.js] (https://nodejs.org/en/)
-[PostrgeSQL] (https://www.postgresql.org/)
-[Nodemon] (https://nodemon.io/)
-
+- [Node.js](https://nodejs.org/en/)
+- [PostrgeSQL](https://www.postgresql.org/)
+- [Nodemon](https://nodemon.io/)
 
 ## Installing
 ```
@@ -32,4 +31,24 @@ CREATE DATABASE 'sprout';
 ```
 Copy and paste database.sql file to set up the entire basic database structure.
 
-# Screenshots
+## Screenshots
+
+![Plant Details](public/images/Details.png)
+![Tasks](public/images/Tasks.png)
+![Garden](public/images/garden_wide.png)
+
+## Completed Features
+
+- [x] Add plants to garden
+- [x] Mark plant as watered or fertilized with one click
+- [x] Notification badge to show incomplete/overdue tasks
+- [x] Reschedule tasks or mark them as completed
+- [x] Add notes to plant to track additional information
+- [x] Upload images for each plant
+
+## Next Steps
+- [ ] Add calendar view for tasks
+- [ ] Reschedule tasks by dragging event on calendar
+
+## Author
+* Jenni Schubert
