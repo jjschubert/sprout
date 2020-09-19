@@ -113,7 +113,7 @@ class App extends Component {
             be taken to the component and path supplied. */}
             <ProtectedRoute
               // with authRedirect:
-              // - if logged in, redirects to "/user"
+              // - if logged in, redirects to "/dashboard"
               // - else shows LoginPage at /login
               exact
               path="/login"
@@ -122,12 +122,12 @@ class App extends Component {
             />
             <ProtectedRoute
               // with authRedirect:
-              // - if logged in, redirects to "/user"
+              // - if logged in, redirects to "/dashboard"
               // - else shows RegisterPage at "/registration"
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/user"
+              authRedirect="/dashboard"
             />
             <ProtectedRoute
               // with authRedirect:
