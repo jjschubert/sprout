@@ -30,7 +30,6 @@ class PlantForm extends Component {
             imagePath: '',
             notes: ''
         },
-        plantList: '',
         progress: false,
     };
 
@@ -39,10 +38,6 @@ class PlantForm extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_TASK_OBJ' });
         this.props.dispatch({ type: 'FETCH_TASKS' })
-        this.setState({
-            ...this.state,
-            plantList: this.props.store.taskObj
-        })
     }
 
     //tracks form changes
@@ -113,7 +108,7 @@ class PlantForm extends Component {
 
         return (
             <div>
-                {this.props.store.taskObj[0] &&
+                {/* {this.props.store.taskObj[0] && */}
                     <Paper >
                         <div className='formDiv' >
                             <form onSubmit={this.addPlant}>
@@ -185,9 +180,9 @@ class PlantForm extends Component {
 
                             </form>
                         </div>
-                        <PlantTable plantList={this.state.plantList} />
+                        <PlantTable />
                     </Paper>
-                }
+                {/* } */}
             </div>
         );
     }

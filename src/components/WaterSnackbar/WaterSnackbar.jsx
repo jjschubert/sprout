@@ -33,7 +33,8 @@ class WaterSnackbar extends Component {
     return (
       <div>
         <Button onClick={() => this.handleClick(this.props.plant)} className='iconBtn'>
-                                    <OpacityIcon /> </Button>
+                                    <OpacityIcon /> 
+                                    </Button>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
